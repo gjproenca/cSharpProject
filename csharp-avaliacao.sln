@@ -3,11 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{069CB21C-746C-450C-A281-EB2459B53DD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontEnd", "frontend\FrontEnd.csproj", "{53C936DF-2014-4945-834D-844DB373836D}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{069CB21C-746C-450C-A281-EB2459B53DD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{069CB21C-746C-450C-A281-EB2459B53DD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{069CB21C-746C-450C-A281-EB2459B53DD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{069CB21C-746C-450C-A281-EB2459B53DD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53C936DF-2014-4945-834D-844DB373836D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53C936DF-2014-4945-834D-844DB373836D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53C936DF-2014-4945-834D-844DB373836D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53C936DF-2014-4945-834D-844DB373836D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {495DA00C-C750-4E8E-B3D5-76DF18FB4C33}
+		SolutionGuid = {1C68921E-B8C8-4BD1-B068-2E36646F000C}
 	EndGlobalSection
 EndGlobal
