@@ -15,14 +15,14 @@ namespace DAL
         public string ResumoObra { get; set; }
     }
 
-    public class AutoresLivros
+    public class AutoreLivro
     {
         public int IDAutorLivro { get; set; }
         public int Autor { get; set; }
         public int Livro { get; set; }
     }
 
-    public class Livros
+    public class Livro
     {
         public int IDLivro { get; set; }
         public string Titulo { get; set; }
@@ -33,10 +33,10 @@ namespace DAL
         public int QuantidadeStock { get; set; }
     }
 
-    public class Categorias
+    public class Categoria
     {
         public int IDCategoria { get; set; }
-        public string Categoria { get; set; }
+        public string NomeCategoria { get; set; }
         public string Descricao { get; set; }
     }
 }
