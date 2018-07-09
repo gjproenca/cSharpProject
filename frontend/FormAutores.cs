@@ -25,6 +25,22 @@ namespace frontend
             PreencherPaises();
         }
 
+        void PreencherPaises()
+        {
+            WebRequest req;
+            req = WebRequest.Create("https://restcountries.eu/rest/v2/all");
+            req.ContentType = "application/json";
+            WebResponse resp = req.GetResponse();
+            Stream strm = resp.GetResponseStream();
+            StreamReader strm_reader = new StreamReader(strm);
+            string json = strm_reader.ReadToEnd();
+            List<Pais> paises = JsonConvert.DeserializeObject<List<Pais>>(json);
+            foreach (Pais p in paises)
+            {
+                comboBoxPaises.Items.Add(p.name);
+            }
+        }
+
         public class Currency
         {
             public string code { get; set; }
@@ -80,22 +96,6 @@ namespace frontend
             public string flag { get; set; }
             public List<object> regionalBlocs { get; set; }
             public string cioc { get; set; }
-        }
-
-        void PreencherPaises()
-        {
-            WebRequest req;
-            req = WebRequest.Create("https://restcountries.eu/rest/v2/all");
-            req.ContentType = "application/json";
-            WebResponse resp = req.GetResponse();
-            Stream strm = resp.GetResponseStream();
-            StreamReader strm_reader = new StreamReader(strm);
-            string json = strm_reader.ReadToEnd();
-            List<Pais> paises = JsonConvert.DeserializeObject<List<Pais>>(json);
-            foreach (Pais p in paises)
-            {
-                comboBoxPaises.Items.Add(p.name);
-            }
         }
     }
 }

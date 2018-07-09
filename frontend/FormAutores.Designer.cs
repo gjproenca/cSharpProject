@@ -50,7 +50,7 @@
             this.comboBoxPaises.FormattingEnabled = true;
             this.comboBoxPaises.Location = new System.Drawing.Point(100, 195);
             this.comboBoxPaises.Name = "comboBoxPaises";
-            this.comboBoxPaises.Size = new System.Drawing.Size(191, 21);
+            this.comboBoxPaises.Size = new System.Drawing.Size(274, 21);
             this.comboBoxPaises.TabIndex = 0;
             // 
             // label1
@@ -74,7 +74,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(321, 198);
+            this.label3.Location = new System.Drawing.Point(380, 198);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 13);
             this.label3.TabIndex = 1;
@@ -115,7 +115,7 @@
             // checkBoxNobel
             // 
             this.checkBoxNobel.AutoSize = true;
-            this.checkBoxNobel.Location = new System.Drawing.Point(395, 198);
+            this.checkBoxNobel.Location = new System.Drawing.Point(454, 198);
             this.checkBoxNobel.Name = "checkBoxNobel";
             this.checkBoxNobel.Size = new System.Drawing.Size(15, 14);
             this.checkBoxNobel.TabIndex = 7;
