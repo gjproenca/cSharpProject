@@ -1,0 +1,6 @@
+\\Vboxsvr\j_drive\programador de informatica\C#\avaliacao\csharp-avaliacao\DAL\bin\Debug\DAL.dll
+\\Vboxsvr\j_drive\programador de informatica\C#\avaliacao\csharp-avaliacao\DAL\bin\Debug\DAL.pdb
+\\Vboxsvr\j_drive\programador de informatica\C#\avaliacao\csharp-avaliacao\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+\\Vboxsvr\j_drive\programador de informatica\C#\avaliacao\csharp-avaliacao\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+\\Vboxsvr\j_drive\programador de informatica\C#\avaliacao\csharp-avaliacao\DAL\obj\Debug\DAL.dll
+\\Vboxsvr\j_drive\programador de informatica\C#\avaliacao\csharp-avaliacao\DAL\obj\Debug\DAL.pdb
