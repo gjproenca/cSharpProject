@@ -75,4 +75,27 @@ namespace DAL
             return new DataTable();
         }
     }
+
+    public class AutorLivroMetodos
+    {
+        public void Inserir(AutorLivro L)
+        {
+
+        }
+
+        public void Alterar(AutorLivro L)
+        {
+
+        }
+
+        public void Eliminar(AutorLivro L)
+        {
+
+        }
+
+        public DataTable SelecionarTodos(AutorLivro L)
+        {
+            return new DataTable();
+        }
+    }
 }

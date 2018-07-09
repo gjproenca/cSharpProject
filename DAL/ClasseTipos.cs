@@ -15,7 +15,7 @@ namespace DAL
         public string ResumoObra { get; set; }
     }
 
-    public class AutoreLivro
+    public class AutorLivro
     {
         public int IDAutorLivro { get; set; }
         public int Autor { get; set; }
