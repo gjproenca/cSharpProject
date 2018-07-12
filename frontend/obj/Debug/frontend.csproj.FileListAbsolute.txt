@@ -27,3 +27,5 @@ F:\programador de informatica\C#\avaliacao\csharp-avaliacao\frontend\obj\Debug\F
 F:\programador de informatica\C#\avaliacao\csharp-avaliacao\frontend\obj\Debug\frontend.exe
 F:\programador de informatica\C#\avaliacao\csharp-avaliacao\frontend\obj\Debug\frontend.pdb
 \\VBOXSVR\j_drive\programador de informatica\C#\avaliacao\csharp-avaliacao\frontend\obj\Debug\frontend.FormLivros.resources
+\\Vboxsvr\j_drive\programador de informatica\C#\avaliacao\csharp-avaliacao\frontend\bin\Debug\DAL.dll
+\\Vboxsvr\j_drive\programador de informatica\C#\avaliacao\csharp-avaliacao\frontend\bin\Debug\DAL.pdb

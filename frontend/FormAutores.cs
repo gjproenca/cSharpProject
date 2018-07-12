@@ -15,13 +15,16 @@ namespace frontend
 {
     public partial class FormAutores : Form
     {
+        DAL.AutorMetodos AutorM = new DAL.AutorMetodos();
+
         public FormAutores()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void FormAutores_Load(object sender, EventArgs e)
         {
+            dataGridViewAutores.DataSource = AutorM.SelecionarTodos();
             PreencherPaises();
         }
 

@@ -10,6 +10,8 @@ namespace DAL
 {
     public class AutorMetodos
     {
+        private SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=Editora;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+
         public void Inserir(Autor A)
         {
 
@@ -25,9 +27,12 @@ namespace DAL
 
         }
 
-        public DataTable SelecionarTodos(Autor A)
+        public DataTable SelecionarTodos()
         {
-
+            SqlDataAdapter comando = new SqlDataAdapter("SELECT IDAutor, Nome, PaisOrigem, PremioNobel, ResumoObra FROM Autores ORDER BY Nome ASC", conn);
+            DataTable tabela = new DataTable();
+            comando.Fill(tabela);
+            return tabela;
         }
     }
 
