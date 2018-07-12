@@ -39,24 +39,31 @@
             this.comboBoxPaises = new System.Windows.Forms.ComboBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.inserirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.alterarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inserirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.alterarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.eliminarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAutores)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewAutores
             // 
+            this.dataGridViewAutores.AllowUserToAddRows = false;
+            this.dataGridViewAutores.AllowUserToDeleteRows = false;
             this.dataGridViewAutores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewAutores.Location = new System.Drawing.Point(13, 13);
+            this.dataGridViewAutores.Location = new System.Drawing.Point(14, 27);
+            this.dataGridViewAutores.MultiSelect = false;
             this.dataGridViewAutores.Name = "dataGridViewAutores";
-            this.dataGridViewAutores.Size = new System.Drawing.Size(459, 150);
+            this.dataGridViewAutores.ReadOnly = true;
+            this.dataGridViewAutores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewAutores.Size = new System.Drawing.Size(758, 150);
             this.dataGridViewAutores.TabIndex = 0;
+            this.dataGridViewAutores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAutores_CellContentClick);
             // 
             // checkBoxNobel
             // 
             this.checkBoxNobel.AutoSize = true;
-            this.checkBoxNobel.Location = new System.Drawing.Point(457, 198);
+            this.checkBoxNobel.Location = new System.Drawing.Point(458, 212);
             this.checkBoxNobel.Name = "checkBoxNobel";
             this.checkBoxNobel.Size = new System.Drawing.Size(15, 14);
             this.checkBoxNobel.TabIndex = 16;
@@ -64,7 +71,7 @@
             // 
             // textBoxResumoObra
             // 
-            this.textBoxResumoObra.Location = new System.Drawing.Point(103, 222);
+            this.textBoxResumoObra.Location = new System.Drawing.Point(104, 236);
             this.textBoxResumoObra.Multiline = true;
             this.textBoxResumoObra.Name = "textBoxResumoObra";
             this.textBoxResumoObra.Size = new System.Drawing.Size(369, 65);
@@ -72,7 +79,7 @@
             // 
             // textBoxNome
             // 
-            this.textBoxNome.Location = new System.Drawing.Point(103, 169);
+            this.textBoxNome.Location = new System.Drawing.Point(104, 183);
             this.textBoxNome.Name = "textBoxNome";
             this.textBoxNome.Size = new System.Drawing.Size(369, 20);
             this.textBoxNome.TabIndex = 14;
@@ -80,7 +87,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 225);
+            this.label4.Location = new System.Drawing.Point(13, 239);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(85, 13);
             this.label4.TabIndex = 10;
@@ -89,7 +96,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(383, 198);
+            this.label3.Location = new System.Drawing.Point(384, 212);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 13);
             this.label3.TabIndex = 11;
@@ -98,7 +105,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 198);
+            this.label2.Location = new System.Drawing.Point(22, 212);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 13);
             this.label2.TabIndex = 12;
@@ -107,7 +114,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(62, 172);
+            this.label1.Location = new System.Drawing.Point(63, 186);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 13;
@@ -116,47 +123,55 @@
             // comboBoxPaises
             // 
             this.comboBoxPaises.FormattingEnabled = true;
-            this.comboBoxPaises.Location = new System.Drawing.Point(103, 195);
+            this.comboBoxPaises.Location = new System.Drawing.Point(104, 209);
             this.comboBoxPaises.Name = "comboBoxPaises";
             this.comboBoxPaises.Size = new System.Drawing.Size(274, 21);
             this.comboBoxPaises.TabIndex = 9;
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.inserirToolStripMenuItem,
-            this.alterarToolStripMenuItem,
-            this.eliminarToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 320);
+            this.inserirToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(485, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
             this.menuStrip1.TabIndex = 17;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // inserirToolStripMenuItem
             // 
+            this.inserirToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.inserirToolStripMenuItem1,
+            this.alterarToolStripMenuItem1,
+            this.eliminarToolStripMenuItem1});
             this.inserirToolStripMenuItem.Name = "inserirToolStripMenuItem";
             this.inserirToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
-            this.inserirToolStripMenuItem.Text = "Inserir";
+            this.inserirToolStripMenuItem.Text = "Ações";
             // 
-            // alterarToolStripMenuItem
+            // inserirToolStripMenuItem1
             // 
-            this.alterarToolStripMenuItem.Name = "alterarToolStripMenuItem";
-            this.alterarToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
-            this.alterarToolStripMenuItem.Text = "Alterar";
+            this.inserirToolStripMenuItem1.Name = "inserirToolStripMenuItem1";
+            this.inserirToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.inserirToolStripMenuItem1.Text = "Inserir";
+            this.inserirToolStripMenuItem1.Click += new System.EventHandler(this.inserirToolStripMenuItem1_Click);
             // 
-            // eliminarToolStripMenuItem
+            // alterarToolStripMenuItem1
             // 
-            this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
-            this.eliminarToolStripMenuItem.Text = "Eliminar";
+            this.alterarToolStripMenuItem1.Name = "alterarToolStripMenuItem1";
+            this.alterarToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
+            this.alterarToolStripMenuItem1.Text = "Alterar";
+            // 
+            // eliminarToolStripMenuItem1
+            // 
+            this.eliminarToolStripMenuItem1.Name = "eliminarToolStripMenuItem1";
+            this.eliminarToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
+            this.eliminarToolStripMenuItem1.Text = "Eliminar";
             // 
             // FormAutores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(485, 344);
+            this.ClientSize = new System.Drawing.Size(784, 561);
             this.Controls.Add(this.checkBoxNobel);
             this.Controls.Add(this.textBoxResumoObra);
             this.Controls.Add(this.textBoxNome);
@@ -191,7 +206,8 @@
         private System.Windows.Forms.ComboBox comboBoxPaises;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem inserirToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem alterarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem inserirToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem alterarToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem1;
     }
 }

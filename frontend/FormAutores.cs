@@ -15,7 +15,8 @@ namespace frontend
 {
     public partial class FormAutores : Form
     {
-        DAL.AutorMetodos AutorM = new DAL.AutorMetodos();
+        DAL.AutorMetodos autorMetodos = new DAL.AutorMetodos();
+        DAL.Autor autor = new DAL.Autor();
 
         public FormAutores()
         {
@@ -24,10 +25,27 @@ namespace frontend
 
         private void FormAutores_Load(object sender, EventArgs e)
         {
-            dataGridViewAutores.DataSource = AutorM.SelecionarTodos();
+            dataGridViewAutores.DataSource = autorMetodos.SelecionarTodos();
             PreencherPaises();
         }
 
+        private void dataGridViewAutores_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBoxNome.Text = dataGridViewAutores.CurrentRow.Cells[1].Value.ToString();
+        }
+
+        public void limpar()
+        {
+            foreach (Control c in this.Controls)
+            {
+                if (c is TextBox)
+                {
+                    c.Text = "";
+                }
+            }
+        }
+
+        #region Paises
         void PreencherPaises()
         {
             WebRequest req;
@@ -99,6 +117,21 @@ namespace frontend
             public string flag { get; set; }
             public List<object> regionalBlocs { get; set; }
             public string cioc { get; set; }
+        }
+        #endregion
+
+        private void inserirToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            autor.Nome = textBoxNome.Text;
+            autor.PremioNobel = true;
+            autor.ResumoObra = "";
+            autor.PaisOrigem = comboBoxPaises.Text;
+
+            autorMetodos.Inserir(autor);
+
+            dataGridViewAutores.DataSource = autorMetodos.SelecionarTodos();
+
+            limpar();
         }
     }
 }

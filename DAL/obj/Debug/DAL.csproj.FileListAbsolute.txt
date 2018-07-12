@@ -4,3 +4,9 @@
 \\Vboxsvr\j_drive\programador de informatica\C#\avaliacao\csharp-avaliacao\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 \\Vboxsvr\j_drive\programador de informatica\C#\avaliacao\csharp-avaliacao\DAL\obj\Debug\DAL.dll
 \\Vboxsvr\j_drive\programador de informatica\C#\avaliacao\csharp-avaliacao\DAL\obj\Debug\DAL.pdb
+J:\programador de informatica\C#\avaliacao\csharp-avaliacao\DAL\bin\Debug\DAL.dll
+J:\programador de informatica\C#\avaliacao\csharp-avaliacao\DAL\bin\Debug\DAL.pdb
+J:\programador de informatica\C#\avaliacao\csharp-avaliacao\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+J:\programador de informatica\C#\avaliacao\csharp-avaliacao\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+J:\programador de informatica\C#\avaliacao\csharp-avaliacao\DAL\obj\Debug\DAL.dll
+J:\programador de informatica\C#\avaliacao\csharp-avaliacao\DAL\obj\Debug\DAL.pdb

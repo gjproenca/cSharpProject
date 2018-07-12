@@ -10,11 +10,26 @@ namespace DAL
 {
     public class AutorMetodos
     {
-        private SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=Editora;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        private SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=Editora;Integrated Security=True");
 
         public void Inserir(Autor A)
         {
-
+            SqlCommand comm_insert = new SqlCommand();
+            comm_insert.Connection = conn;
+            comm_insert.CommandType = CommandType.Text;
+            comm_insert.CommandText = "INSERT INTO [Autores]([Nome], [PaisOrigem]," +
+                "[PremioNobel], [ResumoObra]) VALUES(@nome, @paisOrigem," +
+                "@premioNobel, @resumoObra)";
+            //ler valores definidos no controlos TextBox e preencher
+            //parâmetros do comando definido
+            comm_insert.Parameters.AddWithValue("@nome", A.Nome);
+            comm_insert.Parameters.AddWithValue("@paisOrigem",  A.PaisOrigem);
+            comm_insert.Parameters.AddWithValue("@premioNobel", A.PremioNobel);
+            comm_insert.Parameters.AddWithValue("@resumoObra", A.ResumoObra);
+            //abrir ligação à base de dados e executar INSERT
+            conn.Open();
+            comm_insert.ExecuteNonQuery();
+            conn.Close();
         }
 
         public void Alterar(Autor A)
