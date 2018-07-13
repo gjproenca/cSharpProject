@@ -38,6 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxPaises = new System.Windows.Forms.ComboBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.inserirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inserirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.alterarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,7 +59,7 @@
             this.dataGridViewAutores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewAutores.Size = new System.Drawing.Size(758, 150);
             this.dataGridViewAutores.TabIndex = 0;
-            this.dataGridViewAutores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAutores_CellContentClick);
+            this.dataGridViewAutores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAutores_CellClick);
             // 
             // checkBoxNobel
             // 
@@ -131,12 +132,19 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
             this.inserirToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(784, 24);
             this.menuStrip1.TabIndex = 17;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(22, 20);
+            this.toolStripMenuItem1.Text = "|";
             // 
             // inserirToolStripMenuItem
             // 
@@ -151,7 +159,7 @@
             // inserirToolStripMenuItem1
             // 
             this.inserirToolStripMenuItem1.Name = "inserirToolStripMenuItem1";
-            this.inserirToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.inserirToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
             this.inserirToolStripMenuItem1.Text = "Inserir";
             this.inserirToolStripMenuItem1.Click += new System.EventHandler(this.inserirToolStripMenuItem1_Click);
             // 
@@ -160,12 +168,14 @@
             this.alterarToolStripMenuItem1.Name = "alterarToolStripMenuItem1";
             this.alterarToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
             this.alterarToolStripMenuItem1.Text = "Alterar";
+            this.alterarToolStripMenuItem1.Click += new System.EventHandler(this.alterarToolStripMenuItem1_Click);
             // 
             // eliminarToolStripMenuItem1
             // 
             this.eliminarToolStripMenuItem1.Name = "eliminarToolStripMenuItem1";
-            this.eliminarToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
+            this.eliminarToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.eliminarToolStripMenuItem1.Text = "Eliminar";
+            this.eliminarToolStripMenuItem1.Click += new System.EventHandler(this.eliminarToolStripMenuItem1_Click);
             // 
             // FormAutores
             // 
@@ -209,5 +219,6 @@
         private System.Windows.Forms.ToolStripMenuItem inserirToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem alterarToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     }
 }
