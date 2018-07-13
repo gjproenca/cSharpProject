@@ -41,7 +41,27 @@ namespace frontend
             formLivros = null;
             //throw new NotImplementedException();
         }
-                
+
+        private void categoriasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (formCategorias == null)
+            {
+                formCategorias = new FormCategorias();
+                formCategorias.MdiParent = this;
+                formCategorias.WindowState = FormWindowState.Maximized;
+                formCategorias.FormClosed += formCategoriasClosed;
+                formCategorias.Show();
+            }
+            else
+                formCategorias.Activate();
+        }
+
+        private void formCategoriasClosed(object sender, FormClosedEventArgs e)
+        {
+            formCategorias = null;
+            //throw new NotImplementedException();
+        }
+
         private void autoresToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (formAutores == null)
@@ -60,11 +80,6 @@ namespace frontend
         {
             formAutores = null;
             //throw new NotImplementedException();
-        }
-
-        private void categoriasToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

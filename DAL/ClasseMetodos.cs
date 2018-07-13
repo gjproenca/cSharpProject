@@ -105,14 +105,39 @@ namespace DAL
 
     public class CategoriaMetodos
     {
+        private SqlConnection conn = new SqlConnection(@"Data Source=.\sqlexpress;Initial Catalog=Editora;Integrated Security=True");
+
         public void Inserir(Categoria C)
         {
-
+            SqlCommand comm_insert = new SqlCommand();
+            comm_insert.Connection = conn;
+            comm_insert.CommandType = CommandType.Text;
+            comm_insert.CommandText = "INSERT INTO [Categorias]([Categoria], [Descricao]) VALUES(@categoria, @descricao)";
+            //ler valores definidos no controlos TextBox e preencher
+            //parâmetros do comando definido
+            comm_insert.Parameters.AddWithValue("@categoria", C.NomeCategoria);
+            comm_insert.Parameters.AddWithValue("@descricao", C.Descricao);
+            //abrir ligação à base de dados e executar INSERT
+            conn.Open();
+            comm_insert.ExecuteNonQuery();
+            conn.Close();
         }
 
         public void Alterar(Categoria C)
         {
-
+            SqlCommand comm_update = new SqlCommand();
+            comm_update.Connection = conn;
+            comm_update.CommandType = CommandType.Text;
+            comm_update.CommandText = "UPDATE Categorias SET [Categoria] = @categoria, [Descricao] = @descricao" +
+                "WHERE [IDCategoria] = @idCategoria";
+            //parâmetros do comando definido
+            comm_update.Parameters.AddWithValue("@categoria", C.NomeCategoria);
+            comm_update.Parameters.AddWithValue("@descricao", C.Descricao);
+            comm_update.Parameters.AddWithValue("@idCategoria", C.IDCategoria);
+            //abrir ligação à base de dados e executar INSERT
+            conn.Open();
+            comm_update.ExecuteNonQuery();
+            conn.Close();
         }
 
         public void Eliminar(Categoria C)
@@ -120,9 +145,27 @@ namespace DAL
 
         }
 
-        public DataTable SelecionarTodos(Categoria C)
+        public DataTable SelecionarTodos()
         {
-            return new DataTable();
+            SqlDataAdapter comando = new SqlDataAdapter("SELECT IDCategoria, Categoria, Descricao FROM Categorias ORDER BY Categoria ASC", conn);
+            DataTable tabela = new DataTable();
+            comando.Fill(tabela);
+            return tabela;
+        }
+
+        public int ContarLivros(Categoria C)
+        {
+            SqlCommand comm_count = new SqlCommand();
+            comm_count.Connection = conn;
+            comm_count.CommandType = CommandType.Text;
+            comm_count.CommandText = "SELECT COUNT(*) FROM Livros WHERE [Categoria] = @idCategoria";
+            comm_count.Parameters.AddWithValue("@idCategoria", C.IDCategoria);
+
+            conn.Open();
+            int count = int.Parse(comm_count.ExecuteScalar().ToString());
+            conn.Close();
+
+            return count;
         }
     }
 

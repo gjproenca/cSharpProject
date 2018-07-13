@@ -33,7 +33,7 @@ namespace frontend
         {
             textBoxNome.Text = dataGridViewAutores.CurrentRow.Cells[1].Value.ToString();
             comboBoxPaises.SelectedItem = dataGridViewAutores.CurrentRow.Cells[2].Value.ToString();
-            //checkBoxNobel.Checked = dataGridViewAutores.CurrentRow.Cells[3];
+            checkBoxNobel.Checked = Convert.ToBoolean(dataGridViewAutores.CurrentRow.Cells[3].Value);
             textBoxResumoObra.Text = dataGridViewAutores.CurrentRow.Cells[4].Value.ToString();
         }
 
@@ -127,7 +127,7 @@ namespace frontend
         }
         #endregion
 
-        private void inserirToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void inserirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             autor.Nome = textBoxNome.Text;
             autor.PremioNobel = checkBoxNobel.Checked;
@@ -141,7 +141,7 @@ namespace frontend
             limpar();
         }
 
-        private void alterarToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void alterarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             autor.IDAutor = int.Parse(dataGridViewAutores.CurrentRow.Cells[0].Value.ToString());
             autor.Nome = textBoxNome.Text;
@@ -149,14 +149,17 @@ namespace frontend
             autor.ResumoObra = textBoxResumoObra.Text;
             autor.PaisOrigem = comboBoxPaises.Text;
 
-            autorMetodos.Alterar(autor);
+            if (MessageBox.Show("Tem a certeza que deseja alterar este autor?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                autorMetodos.Alterar(autor);
+            }
 
             dataGridViewAutores.DataSource = autorMetodos.SelecionarTodos();
 
             limpar();
         }
 
-        private void eliminarToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             autor.IDAutor = int.Parse(dataGridViewAutores.CurrentRow.Cells[0].Value.ToString());
 
@@ -170,7 +173,10 @@ namespace frontend
             }
             else
             {
-                autorMetodos.Eliminar(autor);
+                if (MessageBox.Show("Tem a certeza que deseja eliminar este autor?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    autorMetodos.Eliminar(autor);
+                }
             }
 
             dataGridViewAutores.DataSource = autorMetodos.SelecionarTodos();
