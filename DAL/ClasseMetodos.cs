@@ -324,9 +324,12 @@ namespace DAL
 
         }
 
-        public DataTable SelecionarTodos(AutorLivro L)
+        public DataTable SelecionarTodos()
         {
-            return new DataTable();
+            SqlDataAdapter comando = new SqlDataAdapter("SELECT A.Nome, L.Titulo FROM Autores A JOIN AutoresLivros AL ON AL.Livro = A.IDAutor JOIN Livros L ON L.IDLivro = AL.Livro ORDER BY A.Nome, L.Titulo ASC", conn);
+            DataTable tabela = new DataTable();
+            comando.Fill(tabela);
+            return tabela;
         }
     }
 }
