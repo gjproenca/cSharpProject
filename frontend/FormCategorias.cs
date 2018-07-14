@@ -81,15 +81,15 @@ namespace frontend
 
             if (categoriaMetodos.ContarLivros(categoria) > 0)
             {
-                if (MessageBox.Show("Este autor tem outros registos associados, deseja apagar o autor e todos os registos associados?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Esta categoria tem outros registos associados, deseja apagar a categoria e todos os registos associados?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    categoriaMetodos.Eliminar(categoria);
+                    categoriaMetodos.EliminarLivros(categoria);
                     categoriaMetodos.Eliminar(categoria);
                 }
             }
             else
             {
-                if (MessageBox.Show("Tem a certeza que deseja eliminar este autor?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Tem a certeza que deseja eliminar esta categoria?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     categoriaMetodos.Eliminar(categoria);
                 }

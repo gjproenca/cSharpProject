@@ -10,7 +10,10 @@ namespace DAL
 {
     public class AutorMetodos
     {
-        private SqlConnection conn = new SqlConnection(@"Data Source=.\sqlexpress;Initial Catalog=Editora;Integrated Security=True");
+        //Other pcs
+        //private SqlConnection conn = new SqlConnection(@"Data Source=.\sqlexpress;Initial Catalog=Editora;Integrated Security=True");
+        //My pc
+        private SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=Editora;Integrated Security=True");
 
         public void Inserir(Autor A)
         {
@@ -45,7 +48,7 @@ namespace DAL
             comm_update.Parameters.AddWithValue("@premioNobel", A.PremioNobel);
             comm_update.Parameters.AddWithValue("@resumoObra", A.ResumoObra);
             comm_update.Parameters.AddWithValue("@idAutor", A.IDAutor);
-            //abrir ligação à base de dados e executar INSERT
+            //abrir ligação à base de dados e executar UPDATE
             conn.Open();
             comm_update.ExecuteNonQuery();
             conn.Close();
@@ -59,7 +62,7 @@ namespace DAL
             comm_delete.CommandText = "DELETE FROM Autores WHERE [IDAutor] = @idAutor";
             //parâmetros do comando definido
             comm_delete.Parameters.AddWithValue("@idAutor", A.IDAutor);
-            //abrir ligação à base de dados e executar INSERT
+            //abrir ligação à base de dados e executar DELETE
             conn.Open();
             comm_delete.ExecuteNonQuery();
             conn.Close();
@@ -73,7 +76,7 @@ namespace DAL
             comm_delete.CommandText = "DELETE FROM AutoresLivros WHERE [Autor] = @idAutor";
             //parâmetros do comando definido
             comm_delete.Parameters.AddWithValue("@idAutor", A.IDAutor);
-            //abrir ligação à base de dados e executar INSERT
+            //abrir ligação à base de dados e executar DELETE
             conn.Open();
             comm_delete.ExecuteNonQuery();
             conn.Close();
@@ -105,7 +108,10 @@ namespace DAL
 
     public class CategoriaMetodos
     {
-        private SqlConnection conn = new SqlConnection(@"Data Source=.\sqlexpress;Initial Catalog=Editora;Integrated Security=True");
+        //Other pcs
+        //private SqlConnection conn = new SqlConnection(@"Data Source=.\sqlexpress;Initial Catalog=Editora;Integrated Security=True");
+        //My pc
+        private SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=Editora;Integrated Security=True");
 
         public void Inserir(Categoria C)
         {
@@ -128,13 +134,13 @@ namespace DAL
             SqlCommand comm_update = new SqlCommand();
             comm_update.Connection = conn;
             comm_update.CommandType = CommandType.Text;
-            comm_update.CommandText = "UPDATE Categorias SET [Categoria] = @categoria, [Descricao] = @descricao" +
+            comm_update.CommandText = "UPDATE Categorias SET Categoria = @categoria, Descricao = @descricao" +
                 "WHERE [IDCategoria] = @idCategoria";
             //parâmetros do comando definido
             comm_update.Parameters.AddWithValue("@categoria", C.NomeCategoria);
             comm_update.Parameters.AddWithValue("@descricao", C.Descricao);
             comm_update.Parameters.AddWithValue("@idCategoria", C.IDCategoria);
-            //abrir ligação à base de dados e executar INSERT
+            //abrir ligação à base de dados e executar UPDATE
             conn.Open();
             comm_update.ExecuteNonQuery();
             conn.Close();
@@ -142,7 +148,30 @@ namespace DAL
 
         public void Eliminar(Categoria C)
         {
+            SqlCommand comm_delete = new SqlCommand();
+            comm_delete.Connection = conn;
+            comm_delete.CommandType = CommandType.Text;
+            comm_delete.CommandText = "DELETE FROM Categorias WHERE [IDCategoria] = @idCategoria";
+            //parâmetros do comando definido
+            comm_delete.Parameters.AddWithValue("@idCategoria", C.IDCategoria);
+            //abrir ligação à base de dados e executar DELETE
+            conn.Open();
+            comm_delete.ExecuteNonQuery();
+            conn.Close();
+        }
 
+        public void EliminarLivros(Categoria C)
+        {
+            SqlCommand comm_delete = new SqlCommand();
+            comm_delete.Connection = conn;
+            comm_delete.CommandType = CommandType.Text;
+            comm_delete.CommandText = "DELETE FROM Livros WHERE [Categoria] = @categoria";
+            //parâmetros do comando definido
+            comm_delete.Parameters.AddWithValue("@categoria", C.IDCategoria);
+            //abrir ligação à base de dados e executar DELETE
+            conn.Open();
+            comm_delete.ExecuteNonQuery();
+            conn.Close();
         }
 
         public DataTable SelecionarTodos()
@@ -171,9 +200,30 @@ namespace DAL
 
     public class LivroMetodos
     {
+        //Other pcs
+        //private SqlConnection conn = new SqlConnection(@"Data Source=.\sqlexpress;Initial Catalog=Editora;Integrated Security=True");
+        //My pc
+        private SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=Editora;Integrated Security=True");
+
         public void Inserir(Livro L)
         {
-
+            SqlCommand comm_insert = new SqlCommand();
+            comm_insert.Connection = conn;
+            comm_insert.CommandType = CommandType.Text;
+            comm_insert.CommandText = "INSERT INTO [Livros]([Titulo], [ISBN], [Categoria], [AnoLancamento], [Preco], [QuantidadeStock])" +
+                "VALUES(@titulo, @isbn, @categoria, @anoLancamento, @preco, @quantidadeStock)";
+            //ler valores definidos no controlos TextBox e preencher
+            //parâmetros do comando definido
+            comm_insert.Parameters.AddWithValue("@titulo", L.Titulo);
+            comm_insert.Parameters.AddWithValue("@isbn", L.ISBN);
+            comm_insert.Parameters.AddWithValue("@categoria", L.Categoria);
+            comm_insert.Parameters.AddWithValue("@anoLancamento", L.AnoLancamento);
+            comm_insert.Parameters.AddWithValue("@preco", L.Preco);
+            comm_insert.Parameters.AddWithValue("@quantidadeStock", L.QuantidadeStock);
+            //abrir ligação à base de dados e executar INSERT
+            conn.Open();
+            comm_insert.ExecuteNonQuery();
+            conn.Close();
         }
 
         public void Alterar(Livro L)
@@ -194,6 +244,11 @@ namespace DAL
 
     public class AutorLivroMetodos
     {
+        //Other pcs
+        //private SqlConnection conn = new SqlConnection(@"Data Source=.\sqlexpress;Initial Catalog=Editora;Integrated Security=True");
+        //My pc
+        private SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=Editora;Integrated Security=True");
+
         public void Inserir(AutorLivro L)
         {
 

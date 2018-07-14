@@ -16,5 +16,25 @@ namespace frontend
         {
             InitializeComponent();
         }
+
+        private void FormLivros_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void inserirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void alterarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
