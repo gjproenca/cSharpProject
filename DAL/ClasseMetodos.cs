@@ -20,8 +20,7 @@ namespace DAL
             SqlCommand comm_insert = new SqlCommand();
             comm_insert.Connection = conn;
             comm_insert.CommandType = CommandType.Text;
-            comm_insert.CommandText = "INSERT INTO [Autores]([Nome], [PaisOrigem]," +
-                "[PremioNobel], [ResumoObra]) VALUES(@nome, @paisOrigem," +
+            comm_insert.CommandText = "INSERT INTO [Autores]([Nome], [PaisOrigem], [PremioNobel], [ResumoObra]) VALUES(@nome, @paisOrigem," +
                 "@premioNobel, @resumoObra)";
             //ler valores definidos no controlos TextBox e preencher
             //parâmetros do comando definido
@@ -40,8 +39,7 @@ namespace DAL
             SqlCommand comm_update = new SqlCommand();
             comm_update.Connection = conn;
             comm_update.CommandType = CommandType.Text;
-            comm_update.CommandText = "UPDATE Autores SET [Nome] = @nome, [PaisOrigem] = @paisOrigem," +
-                "[PremioNobel] = @premioNobel, [ResumoObra] = @resumoObra WHERE [IDAutor] = @idAutor";
+            comm_update.CommandText = "UPDATE Autores SET [Nome] = @nome, [PaisOrigem] = @paisOrigem, [PremioNobel] = @premioNobel, [ResumoObra] = @resumoObra WHERE [IDAutor] = @idAutor";
             //parâmetros do comando definido
             comm_update.Parameters.AddWithValue("@nome", A.Nome);
             comm_update.Parameters.AddWithValue("@paisOrigem", A.PaisOrigem);
@@ -134,8 +132,7 @@ namespace DAL
             SqlCommand comm_update = new SqlCommand();
             comm_update.Connection = conn;
             comm_update.CommandType = CommandType.Text;
-            comm_update.CommandText = "UPDATE Categorias SET Categoria = @categoria, Descricao = @descricao" +
-                "WHERE [IDCategoria] = @idCategoria";
+            comm_update.CommandText = "UPDATE Categorias SET Categoria = @categoria, Descricao = @descricao WHERE [IDCategoria] = @idCategoria";
             //parâmetros do comando definido
             comm_update.Parameters.AddWithValue("@categoria", C.NomeCategoria);
             comm_update.Parameters.AddWithValue("@descricao", C.Descricao);
@@ -210,8 +207,7 @@ namespace DAL
             SqlCommand comm_insert = new SqlCommand();
             comm_insert.Connection = conn;
             comm_insert.CommandType = CommandType.Text;
-            comm_insert.CommandText = "INSERT INTO [Livros]([Titulo], [ISBN], [Categoria], [AnoLancamento], [Preco], [QuantidadeStock])" +
-                "VALUES(@titulo, @isbn, @categoria, @anoLancamento, @preco, @quantidadeStock)";
+            comm_insert.CommandText = "INSERT INTO [Livros]([Titulo], [ISBN], [Categoria], [AnoLancamento], [Preco], [QuantidadeStock]) VALUES(@titulo, @isbn, @categoria, @anoLancamento, @preco, @quantidadeStock)";
             //ler valores definidos no controlos TextBox e preencher
             //parâmetros do comando definido
             comm_insert.Parameters.AddWithValue("@titulo", L.Titulo);
@@ -228,17 +224,104 @@ namespace DAL
 
         public void Alterar(Livro L)
         {
-
+            SqlCommand comm_update = new SqlCommand();
+            comm_update.Connection = conn;
+            comm_update.CommandType = CommandType.Text;
+            comm_update.CommandText = "UPDATE Livros SET Titulo= @titulo, ISBN = @isbn, Categoria = @categoria, AnoLancamento = @anoLancamento, Preco = @preco, QuantidadeStock = @quantidadeStock WHERE [IDLivro] = @idLivro";
+            //parâmetros do comando definido
+            comm_update.Parameters.AddWithValue("@titulo", L.Titulo);
+            comm_update.Parameters.AddWithValue("@isbn", L.ISBN);
+            comm_update.Parameters.AddWithValue("@categoria", L.Categoria);
+            comm_update.Parameters.AddWithValue("@anoLancamento", L.AnoLancamento);
+            comm_update.Parameters.AddWithValue("@preco", L.Preco);
+            comm_update.Parameters.AddWithValue("@quantidadeStock", L.QuantidadeStock);
+            comm_update.Parameters.AddWithValue("@idLivro", L.IDLivro);
+            //abrir ligação à base de dados e executar UPDATE
+            conn.Open();
+            comm_update.ExecuteNonQuery();
+            conn.Close();
         }
 
         public void Eliminar(Livro L)
         {
-
+            SqlCommand comm_delete = new SqlCommand();
+            comm_delete.Connection = conn;
+            comm_delete.CommandType = CommandType.Text;
+            comm_delete.CommandText = "DELETE FROM Livros WHERE IDLivro = @idLivro";
+            //parâmetros do comando definido
+            comm_delete.Parameters.AddWithValue("@idLivro", L.IDLivro);
+            //abrir ligação à base de dados e executar DELETE
+            conn.Open();
+            comm_delete.ExecuteNonQuery();
+            conn.Close();
         }
 
-        public DataTable SelecionarTodos(Livro L)
+        public void EliminarAutoresLivros(Livro L)
         {
-            return new DataTable();
+            SqlCommand comm_delete = new SqlCommand();
+            comm_delete.Connection = conn;
+            comm_delete.CommandType = CommandType.Text;
+            comm_delete.CommandText = "DELETE FROM AutoresLivros WHERE Livro = @livro";
+            //parâmetros do comando definido
+            comm_delete.Parameters.AddWithValue("@livro", L.IDLivro);
+            //abrir ligação à base de dados e executar DELETE
+            conn.Open();
+            comm_delete.ExecuteNonQuery();
+            conn.Close();
+        }
+
+        public int ContarAutoresLivros(Livro L)
+        {
+            SqlCommand comm_count = new SqlCommand();
+            comm_count.Connection = conn;
+            comm_count.CommandType = CommandType.Text;
+            comm_count.CommandText = "SELECT COUNT(*) FROM AutoresLivros WHERE [Livro] = @idLivro";
+            comm_count.Parameters.AddWithValue("@idLivro", L.IDLivro);
+
+            conn.Open();
+            int count = int.Parse(comm_count.ExecuteScalar().ToString());
+            conn.Close();
+
+            return count;
+        }
+
+        ////--------------- metodo extraido
+        //public SqlDataReader preencherCategorias()
+        //{
+        //    SqlCommand comm_select = new SqlCommand();
+        //    comm_select.Connection = conn;
+        //    comm_select.CommandType = CommandType.Text;
+        //    comm_select.CommandText = "SELECT Categoria FROM Categorias";
+
+        //    conn.Open();
+        //    SqlDataReader dr = comm_select.ExecuteReader();
+        //    conn.Close();
+        //    return dr;
+        //}
+        ////--------------
+
+        //public int getCategoriaId(String nomeCategoria)
+        //{
+        //    // FIXME 
+        //    SqlCommand comm_id = new SqlCommand();
+        //    comm_id.Connection = conn;
+        //    comm_id.CommandType = CommandType.Text;
+        //    comm_id.CommandText = "SELECT IDCategoria FROM Categorias WHERE [Categoria] = @nomeCategoria";
+        //    comm_id.Parameters.AddWithValue("@nomeCategoria", nomeCategoria);
+
+        //    conn.Open();
+        //    int id = int.Parse(comm_id.ExecuteNonQuery().ToString());
+        //    conn.Close();
+
+        //    return id;
+        //}
+
+        public DataTable SelecionarTodos()
+        {
+            SqlDataAdapter comando = new SqlDataAdapter("SELECT L.IDLivro, L.Titulo, L.ISBN, L.Categoria, L.AnoLancamento, L.Preco, L.QuantidadeStock FROM Livros L JOIN Categorias C  ON L.Categoria = C.IDCategoria ORDER BY Titulo ASC", conn);
+            DataTable tabela = new DataTable();
+            comando.Fill(tabela);
+            return tabela;
         }
     }
 

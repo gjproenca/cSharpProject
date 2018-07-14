@@ -27,29 +27,31 @@ namespace frontend
         {
             dataGridViewAutores.DataSource = autorMetodos.SelecionarTodos();
             PreencherPaises();
+            preencherCampos();
+            setAutor();
         }
 
         private void dataGridViewAutores_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            preencherCampos();
+            setAutor();
+        }
+
+        private void preencherCampos()
+        {
             textBoxNome.Text = dataGridViewAutores.CurrentRow.Cells[1].Value.ToString();
-            comboBoxPaises.SelectedItem = dataGridViewAutores.CurrentRow.Cells[2].Value.ToString();
+            comboBoxPaises.Text = dataGridViewAutores.CurrentRow.Cells[2].Value.ToString();
             checkBoxNobel.Checked = Convert.ToBoolean(dataGridViewAutores.CurrentRow.Cells[3].Value);
             textBoxResumoObra.Text = dataGridViewAutores.CurrentRow.Cells[4].Value.ToString();
         }
 
-        public void limpar()
+        private void setAutor()
         {
-            foreach (Control c in this.Controls)
-            {
-                if (c is TextBox)
-                {
-                    c.Text = "";
-                }
-                if (c is ComboBox)
-                {
-                    c.Text = "";
-                }
-            }
+            autor.IDAutor = int.Parse(dataGridViewAutores.CurrentRow.Cells[0].Value.ToString());
+            autor.Nome = textBoxNome.Text;
+            autor.PremioNobel = checkBoxNobel.Checked;
+            autor.ResumoObra = textBoxResumoObra.Text;
+            autor.PaisOrigem = comboBoxPaises.Text;
         }
 
         #region Paises
@@ -129,59 +131,74 @@ namespace frontend
 
         private void inserirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            autor.Nome = textBoxNome.Text;
-            autor.PremioNobel = checkBoxNobel.Checked;
-            autor.ResumoObra = textBoxResumoObra.Text;
-            autor.PaisOrigem = comboBoxPaises.Text;
+            setAutor();
 
             autorMetodos.Inserir(autor);
 
             dataGridViewAutores.DataSource = autorMetodos.SelecionarTodos();
-
-            limpar();
+            preencherCampos();
         }
 
         private void alterarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            autor.IDAutor = int.Parse(dataGridViewAutores.CurrentRow.Cells[0].Value.ToString());
-            autor.Nome = textBoxNome.Text;
-            autor.PremioNobel = checkBoxNobel.Checked;
-            autor.ResumoObra = textBoxResumoObra.Text;
-            autor.PaisOrigem = comboBoxPaises.Text;
-
             if (MessageBox.Show("Tem a certeza que deseja alterar este autor?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
+                setAutor();
                 autorMetodos.Alterar(autor);
+
+                dataGridViewAutores.DataSource = autorMetodos.SelecionarTodos();
+                preencherCampos();
             }
-
-            dataGridViewAutores.DataSource = autorMetodos.SelecionarTodos();
-
-            limpar();
         }
 
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            autor.IDAutor = int.Parse(dataGridViewAutores.CurrentRow.Cells[0].Value.ToString());
-
             if (autorMetodos.ContarLivros(autor) > 0)
             {
                 if (MessageBox.Show("Este autor tem outros registos associados, deseja apagar o autor e todos os registos associados?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
+                    setAutor();
+
                     autorMetodos.EliminarAutoresLivros(autor);
                     autorMetodos.Eliminar(autor);
+
+                    dataGridViewAutores.DataSource = autorMetodos.SelecionarTodos();
+                    preencherCampos();
                 }
             }
             else
             {
                 if (MessageBox.Show("Tem a certeza que deseja eliminar este autor?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
+                    setAutor();
+
                     autorMetodos.Eliminar(autor);
+
+                    dataGridViewAutores.DataSource = autorMetodos.SelecionarTodos();
+                    preencherCampos();
                 }
             }
+        }
 
-            dataGridViewAutores.DataSource = autorMetodos.SelecionarTodos();
+        private void limparToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Control c in this.Controls)
+            {
+                if (c is TextBox)
+                {
+                    c.Text = "";
+                }
 
-            limpar();
+                if (c is CheckBox)
+                {
+                    // TODO: checkbox clear
+                }
+
+                if (c is ComboBox)
+                {
+                    c.Text = "";
+                }
+            }
         }
     }
 }

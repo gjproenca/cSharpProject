@@ -23,16 +23,84 @@ namespace frontend
         private void FormCategorias_Load(object sender, EventArgs e)
         {
             dataGridViewCategorias.DataSource = categoriaMetodos.SelecionarTodos();
+            preencherCampos();
+            setCategoria();
+
         }
 
 
         private void dataGridViewCategorias_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            preencherCampos();
+            setCategoria();
+        }
+
+        private void setCategoria()
+        {
+            categoria.IDCategoria = int.Parse(dataGridViewCategorias.CurrentRow.Cells[0].Value.ToString());
+            categoria.NomeCategoria = textBoxCategoria.Text;
+            categoria.Descricao = textBoxDescricao.Text;
+        }
+
+        private void preencherCampos()
+        {
             textBoxCategoria.Text = dataGridViewCategorias.CurrentRow.Cells[1].Value.ToString();
             textBoxDescricao.Text = dataGridViewCategorias.CurrentRow.Cells[2].Value.ToString();
         }
 
-        public void limpar()
+        private void inserirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            setCategoria();
+
+            categoriaMetodos.Inserir(categoria);
+
+            dataGridViewCategorias.DataSource = categoriaMetodos.SelecionarTodos();
+            preencherCampos();
+        }
+
+        private void alterarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Tem a certeza que deseja alterar esta categoria?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                setCategoria();
+
+                categoriaMetodos.Alterar(categoria);
+
+                dataGridViewCategorias.DataSource = categoriaMetodos.SelecionarTodos();
+                preencherCampos();
+            }
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (categoriaMetodos.ContarLivros(categoria) > 0)
+            {
+                if (MessageBox.Show("Esta categoria tem outros registos associados, deseja apagar a categoria e todos os registos associados?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    setCategoria();
+
+                    categoriaMetodos.EliminarLivros(categoria);
+                    categoriaMetodos.Eliminar(categoria);
+
+                    dataGridViewCategorias.DataSource = categoriaMetodos.SelecionarTodos();
+                    preencherCampos();
+                }
+            }
+            else
+            {
+                if (MessageBox.Show("Tem a certeza que deseja eliminar esta categoria?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    setCategoria();
+
+                    categoriaMetodos.Eliminar(categoria);
+
+                    dataGridViewCategorias.DataSource = categoriaMetodos.SelecionarTodos();
+                    preencherCampos();
+                }
+            }
+        }
+
+        private void limparCamposToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (Control c in this.Controls)
             {
@@ -40,64 +108,12 @@ namespace frontend
                 {
                     c.Text = "";
                 }
+
                 if (c is ComboBox)
                 {
                     c.Text = "";
                 }
             }
-        }
-
-        private void inserirToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            categoria.NomeCategoria = textBoxCategoria.Text;
-            categoria.Descricao = textBoxDescricao.Text;
-
-            categoriaMetodos.Inserir(categoria);
-
-            dataGridViewCategorias.DataSource = categoriaMetodos.SelecionarTodos();
-
-            limpar();
-        }
-
-        private void alterarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            categoria.IDCategoria = int.Parse(dataGridViewCategorias.CurrentRow.Cells[0].Value.ToString());
-            categoria.NomeCategoria = textBoxCategoria.Text;
-            categoria.Descricao = textBoxDescricao.Text;
-
-            if (MessageBox.Show("Tem a certeza que deseja alterar esta categoria?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                categoriaMetodos.Alterar(categoria);
-            }
-
-            dataGridViewCategorias.DataSource = categoriaMetodos.SelecionarTodos();
-
-            limpar();
-        }
-
-        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            categoria.IDCategoria = int.Parse(dataGridViewCategorias.CurrentRow.Cells[0].Value.ToString());
-
-            if (categoriaMetodos.ContarLivros(categoria) > 0)
-            {
-                if (MessageBox.Show("Esta categoria tem outros registos associados, deseja apagar a categoria e todos os registos associados?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    categoriaMetodos.EliminarLivros(categoria);
-                    categoriaMetodos.Eliminar(categoria);
-                }
-            }
-            else
-            {
-                if (MessageBox.Show("Tem a certeza que deseja eliminar esta categoria?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    categoriaMetodos.Eliminar(categoria);
-                }
-            }
-
-            dataGridViewCategorias.DataSource = categoriaMetodos.SelecionarTodos();
-
-            limpar();
         }
     }
 }
