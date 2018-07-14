@@ -27,7 +27,7 @@ namespace DAL
         public int IDLivro { get; set; }
         public string Titulo { get; set; }
         public string ISBN { get; set; }
-        public int Categoria { get; set; }
+        public string Categoria { get; set; }
         public int AnoLancamento { get; set; }
         public decimal Preco { get; set; }
         public int QuantidadeStock { get; set; }

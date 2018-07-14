@@ -207,7 +207,7 @@ namespace DAL
             SqlCommand comm_insert = new SqlCommand();
             comm_insert.Connection = conn;
             comm_insert.CommandType = CommandType.Text;
-            comm_insert.CommandText = "INSERT INTO [Livros]([Titulo], [ISBN], [Categoria], [AnoLancamento], [Preco], [QuantidadeStock]) VALUES(@titulo, @isbn, @categoria, @anoLancamento, @preco, @quantidadeStock)";
+            comm_insert.CommandText = "INSERT INTO [Livros]([Titulo], [ISBN], [Categoria], [AnoLancamento], [Preco], [QuantidadeStock]) VALUES(@titulo, @isbn, (SELECT IDCategoria FROM Categorias WHERE Categoria = @categoria), @anoLancamento, @preco, @quantidadeStock)";
             //ler valores definidos no controlos TextBox e preencher
             //parâmetros do comando definido
             comm_insert.Parameters.AddWithValue("@titulo", L.Titulo);
@@ -227,7 +227,7 @@ namespace DAL
             SqlCommand comm_update = new SqlCommand();
             comm_update.Connection = conn;
             comm_update.CommandType = CommandType.Text;
-            comm_update.CommandText = "UPDATE Livros SET Titulo= @titulo, ISBN = @isbn, Categoria = @categoria, AnoLancamento = @anoLancamento, Preco = @preco, QuantidadeStock = @quantidadeStock WHERE [IDLivro] = @idLivro";
+            comm_update.CommandText = "UPDATE Livros SET Titulo= @titulo, ISBN = @isbn, Categoria = (SELECT IDCategoria FROM Categorias WHERE Categoria = @categoria), AnoLancamento = @anoLancamento, Preco = @preco, QuantidadeStock = @quantidadeStock WHERE [IDLivro] = @idLivro";
             //parâmetros do comando definido
             comm_update.Parameters.AddWithValue("@titulo", L.Titulo);
             comm_update.Parameters.AddWithValue("@isbn", L.ISBN);
@@ -287,7 +287,7 @@ namespace DAL
 
         public DataTable SelecionarCategorias()
         {
-            SqlDataAdapter comando = new SqlDataAdapter("SELECT IDCategoria FROM Categorias", conn);
+            SqlDataAdapter comando = new SqlDataAdapter("SELECT DISTINCT Categoria FROM Categorias", conn);
             DataTable tabela = new DataTable();
             comando.Fill(tabela);
             return tabela;
@@ -295,7 +295,7 @@ namespace DAL
 
         public DataTable SelecionarTodos()
         {
-            SqlDataAdapter comando = new SqlDataAdapter("SELECT L.IDLivro, L.Titulo, L.ISBN, L.Categoria, L.AnoLancamento, L.Preco, L.QuantidadeStock FROM Livros L JOIN Categorias C  ON L.Categoria = C.IDCategoria ORDER BY Titulo ASC", conn);
+            SqlDataAdapter comando = new SqlDataAdapter("SELECT L.IDLivro, L.Titulo, L.ISBN, C.Categoria, L.AnoLancamento, L.Preco, L.QuantidadeStock FROM Livros L JOIN Categorias C  ON L.Categoria = C.IDCategoria ORDER BY Titulo ASC", conn);
             DataTable tabela = new DataTable();
             comando.Fill(tabela);
             return tabela;

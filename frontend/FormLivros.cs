@@ -40,8 +40,8 @@ namespace frontend
             textBoxIsbn.Text = dataGridViewLivros.CurrentRow.Cells[2].Value.ToString();
 
             comboBoxCategoria.DataSource = livroMetodos.SelecionarCategorias();
-            comboBoxCategoria.DisplayMember = "IDCategoria";
-            comboBoxCategoria.ValueMember = "IDCategoria";
+            comboBoxCategoria.DisplayMember = "Categoria";
+            comboBoxCategoria.ValueMember = "Categoria";
 
             comboBoxCategoria.Text = dataGridViewLivros.CurrentRow.Cells[3].Value.ToString();
             textBoxAnoLancamento.Text = dataGridViewLivros.CurrentRow.Cells[4].Value.ToString();
@@ -55,13 +55,14 @@ namespace frontend
             livro.IDLivro = int.Parse(dataGridViewLivros.CurrentRow.Cells[0].Value.ToString());
             livro.Titulo = textBoxTitulo.Text;
             livro.ISBN = textBoxIsbn.Text;
-            int.TryParse(comboBoxCategoria.Text, out int categoria);
-            livro.Categoria = categoria;
-            //livro.Categoria = livroMetodos.getCategoriaId(comboBoxCategoria.Text);
+            livro.Categoria = comboBoxCategoria.Text;
+
             int.TryParse(textBoxAnoLancamento.Text, out int AnoLancamento);
             livro.AnoLancamento = AnoLancamento;
+
             decimal.TryParse(textBoxPreco.Text, out decimal preco);
             livro.Preco = preco;
+
             int.TryParse(textBoxQuantidadeStock.Text, out int quantidadeStock);
             livro.QuantidadeStock = quantidadeStock;
         }
