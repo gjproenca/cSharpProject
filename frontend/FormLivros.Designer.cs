@@ -43,10 +43,10 @@
             this.inserirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alterarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comboBoxCategoria = new System.Windows.Forms.ComboBox();
-            this.textBoxAnoLancamento = new System.Windows.Forms.TextBox();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.limparCamposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comboBoxCategoria = new System.Windows.Forms.ComboBox();
+            this.textBoxAnoLancamento = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLivros)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -183,6 +183,19 @@
             this.eliminarToolStripMenuItem.Text = "Eliminar";
             this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(22, 20);
+            this.toolStripMenuItem1.Text = "|";
+            // 
+            // limparCamposToolStripMenuItem
+            // 
+            this.limparCamposToolStripMenuItem.Name = "limparCamposToolStripMenuItem";
+            this.limparCamposToolStripMenuItem.Size = new System.Drawing.Size(101, 20);
+            this.limparCamposToolStripMenuItem.Text = "Limpar campos";
+            this.limparCamposToolStripMenuItem.Click += new System.EventHandler(this.limparCamposToolStripMenuItem_Click);
+            // 
             // comboBoxCategoria
             // 
             this.comboBoxCategoria.FormattingEnabled = true;
@@ -197,19 +210,6 @@
             this.textBoxAnoLancamento.Name = "textBoxAnoLancamento";
             this.textBoxAnoLancamento.Size = new System.Drawing.Size(143, 20);
             this.textBoxAnoLancamento.TabIndex = 2;
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(22, 20);
-            this.toolStripMenuItem1.Text = "|";
-            // 
-            // limparCamposToolStripMenuItem
-            // 
-            this.limparCamposToolStripMenuItem.Name = "limparCamposToolStripMenuItem";
-            this.limparCamposToolStripMenuItem.Size = new System.Drawing.Size(101, 20);
-            this.limparCamposToolStripMenuItem.Text = "Limpar campos";
-            this.limparCamposToolStripMenuItem.Click += new System.EventHandler(this.limparCamposToolStripMenuItem_Click);
             // 
             // FormLivros
             // 

@@ -285,36 +285,13 @@ namespace DAL
             return count;
         }
 
-        ////--------------- metodo extraido
-        //public SqlDataReader preencherCategorias()
-        //{
-        //    SqlCommand comm_select = new SqlCommand();
-        //    comm_select.Connection = conn;
-        //    comm_select.CommandType = CommandType.Text;
-        //    comm_select.CommandText = "SELECT Categoria FROM Categorias";
-
-        //    conn.Open();
-        //    SqlDataReader dr = comm_select.ExecuteReader();
-        //    conn.Close();
-        //    return dr;
-        //}
-        ////--------------
-
-        //public int getCategoriaId(String nomeCategoria)
-        //{
-        //    // FIXME 
-        //    SqlCommand comm_id = new SqlCommand();
-        //    comm_id.Connection = conn;
-        //    comm_id.CommandType = CommandType.Text;
-        //    comm_id.CommandText = "SELECT IDCategoria FROM Categorias WHERE [Categoria] = @nomeCategoria";
-        //    comm_id.Parameters.AddWithValue("@nomeCategoria", nomeCategoria);
-
-        //    conn.Open();
-        //    int id = int.Parse(comm_id.ExecuteNonQuery().ToString());
-        //    conn.Close();
-
-        //    return id;
-        //}
+        public DataTable SelecionarCategorias()
+        {
+            SqlDataAdapter comando = new SqlDataAdapter("SELECT IDCategoria FROM Categorias", conn);
+            DataTable tabela = new DataTable();
+            comando.Fill(tabela);
+            return tabela;
+        }
 
         public DataTable SelecionarTodos()
         {

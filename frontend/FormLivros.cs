@@ -39,22 +39,9 @@ namespace frontend
             textBoxTitulo.Text = dataGridViewLivros.CurrentRow.Cells[1].Value.ToString();
             textBoxIsbn.Text = dataGridViewLivros.CurrentRow.Cells[2].Value.ToString();
 
-            //-------------Metodo a extrair para DAL
-            SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=Editora;Integrated Security=True");
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("SELECT IDCategoria From Categorias", conn);
-            SqlDataReader dr = cmd.ExecuteReader();
-            //-------------Metodo a extrair
-
-            while (dr.Read())
-            {
-                comboBoxCategoria.Items.Add(dr[0]);
-
-            }
-
-            //-------------Metodo a extrair para DAL
-            conn.Close();
-            //-------------Metodo a extrair
+            comboBoxCategoria.DataSource = livroMetodos.SelecionarCategorias();
+            comboBoxCategoria.DisplayMember = "IDCategoria";
+            comboBoxCategoria.ValueMember = "IDCategoria";
 
             comboBoxCategoria.Text = dataGridViewLivros.CurrentRow.Cells[3].Value.ToString();
             textBoxAnoLancamento.Text = dataGridViewLivros.CurrentRow.Cells[4].Value.ToString();
