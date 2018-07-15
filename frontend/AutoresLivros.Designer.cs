@@ -153,6 +153,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ControlBox = false;
             this.Controls.Add(this.comboBoxLivro);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBoxAutor);
@@ -160,6 +161,8 @@
             this.Controls.Add(this.dataGridViewAutoresLivros);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormAutoresLivros";
             this.Text = "AutoresLivros";
             this.Load += new System.EventHandler(this.AutoresLivros_Load);

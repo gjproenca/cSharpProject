@@ -20,8 +20,7 @@ namespace DAL
             SqlCommand comm_insert = new SqlCommand();
             comm_insert.Connection = conn;
             comm_insert.CommandType = CommandType.Text;
-            comm_insert.CommandText = "INSERT INTO [Autores]([Nome], [PaisOrigem], [PremioNobel], [ResumoObra]) VALUES(@nome, @paisOrigem," +
-                "@premioNobel, @resumoObra)";
+            comm_insert.CommandText = "INSERT INTO Autores(Nome, PaisOrigem, PremioNobel, ResumoObra) VALUES(@nome, @paisOrigem, @premioNobel, @resumoObra)";
             //parâmetros do comando definido
             comm_insert.Parameters.AddWithValue("@nome", A.Nome);
             comm_insert.Parameters.AddWithValue("@paisOrigem", A.PaisOrigem);
@@ -38,7 +37,7 @@ namespace DAL
             SqlCommand comm_update = new SqlCommand();
             comm_update.Connection = conn;
             comm_update.CommandType = CommandType.Text;
-            comm_update.CommandText = "UPDATE Autores SET [Nome] = @nome, [PaisOrigem] = @paisOrigem, [PremioNobel] = @premioNobel, [ResumoObra] = @resumoObra WHERE [IDAutor] = @idAutor";
+            comm_update.CommandText = "UPDATE Autores SET Nome = @nome, PaisOrigem = @paisOrigem, PremioNobel = @premioNobel, ResumoObra = @resumoObra WHERE IDAutor = @idAutor";
             //parâmetros do comando definido
             comm_update.Parameters.AddWithValue("@nome", A.Nome);
             comm_update.Parameters.AddWithValue("@paisOrigem", A.PaisOrigem);
@@ -56,7 +55,7 @@ namespace DAL
             SqlCommand comm_delete = new SqlCommand();
             comm_delete.Connection = conn;
             comm_delete.CommandType = CommandType.Text;
-            comm_delete.CommandText = "DELETE FROM Autores WHERE [IDAutor] = @idAutor";
+            comm_delete.CommandText = "DELETE FROM Autores WHERE IDAutor = @idAutor";
             //parâmetros do comando definido
             comm_delete.Parameters.AddWithValue("@idAutor", A.IDAutor);
             //abrir ligação à base de dados e executar DELETE
@@ -70,7 +69,7 @@ namespace DAL
             SqlCommand comm_delete = new SqlCommand();
             comm_delete.Connection = conn;
             comm_delete.CommandType = CommandType.Text;
-            comm_delete.CommandText = "DELETE FROM AutoresLivros WHERE [Autor] = @idAutor";
+            comm_delete.CommandText = "DELETE FROM AutoresLivros WHERE Autor = @idAutor";
             //parâmetros do comando definido
             comm_delete.Parameters.AddWithValue("@idAutor", A.IDAutor);
             //abrir ligação à base de dados e executar DELETE
@@ -92,7 +91,7 @@ namespace DAL
             SqlCommand comm_count = new SqlCommand();
             comm_count.Connection = conn;
             comm_count.CommandType = CommandType.Text;
-            comm_count.CommandText = "SELECT COUNT(*) FROM AutoresLivros WHERE [Autor] = @idAutor";
+            comm_count.CommandText = "SELECT COUNT(*) FROM AutoresLivros WHERE Autor = @idAutor";
             comm_count.Parameters.AddWithValue("@idAutor", A.IDAutor);
 
             conn.Open();
@@ -115,7 +114,7 @@ namespace DAL
             SqlCommand comm_insert = new SqlCommand();
             comm_insert.Connection = conn;
             comm_insert.CommandType = CommandType.Text;
-            comm_insert.CommandText = "INSERT INTO [Categorias]([Categoria], [Descricao]) VALUES(@categoria, @descricao)";
+            comm_insert.CommandText = "INSERT INTO Categorias(Categoria, Descricao) VALUES(@categoria, @descricao)";
             //parâmetros do comando definido
             comm_insert.Parameters.AddWithValue("@categoria", C.NomeCategoria);
             comm_insert.Parameters.AddWithValue("@descricao", C.Descricao);
@@ -130,7 +129,7 @@ namespace DAL
             SqlCommand comm_update = new SqlCommand();
             comm_update.Connection = conn;
             comm_update.CommandType = CommandType.Text;
-            comm_update.CommandText = "UPDATE Categorias SET Categoria = @categoria, Descricao = @descricao WHERE [IDCategoria] = @idCategoria";
+            comm_update.CommandText = "UPDATE Categorias SET Categoria = @categoria, Descricao = @descricao WHERE IDCategoria = @idCategoria";
             //parâmetros do comando definido
             comm_update.Parameters.AddWithValue("@categoria", C.NomeCategoria);
             comm_update.Parameters.AddWithValue("@descricao", C.Descricao);
@@ -146,7 +145,7 @@ namespace DAL
             SqlCommand comm_delete = new SqlCommand();
             comm_delete.Connection = conn;
             comm_delete.CommandType = CommandType.Text;
-            comm_delete.CommandText = "DELETE FROM Categorias WHERE [IDCategoria] = @idCategoria";
+            comm_delete.CommandText = "DELETE FROM Categorias WHERE IDCategoria = @idCategoria";
             //parâmetros do comando definido
             comm_delete.Parameters.AddWithValue("@idCategoria", C.IDCategoria);
             //abrir ligação à base de dados e executar DELETE
@@ -160,7 +159,7 @@ namespace DAL
             SqlCommand comm_delete = new SqlCommand();
             comm_delete.Connection = conn;
             comm_delete.CommandType = CommandType.Text;
-            comm_delete.CommandText = "DELETE FROM Livros WHERE [Categoria] = @categoria";
+            comm_delete.CommandText = "DELETE FROM Livros WHERE Categoria = @categoria";
             //parâmetros do comando definido
             comm_delete.Parameters.AddWithValue("@categoria", C.IDCategoria);
             //abrir ligação à base de dados e executar DELETE
@@ -182,7 +181,7 @@ namespace DAL
             SqlCommand comm_count = new SqlCommand();
             comm_count.Connection = conn;
             comm_count.CommandType = CommandType.Text;
-            comm_count.CommandText = "SELECT COUNT(*) FROM Livros WHERE [Categoria] = @idCategoria";
+            comm_count.CommandText = "SELECT COUNT(*) FROM Livros WHERE Categoria = @idCategoria";
             comm_count.Parameters.AddWithValue("@idCategoria", C.IDCategoria);
 
             conn.Open();
@@ -205,7 +204,7 @@ namespace DAL
             SqlCommand comm_insert = new SqlCommand();
             comm_insert.Connection = conn;
             comm_insert.CommandType = CommandType.Text;
-            comm_insert.CommandText = "INSERT INTO [Livros]([Titulo], [ISBN], [Categoria], [AnoLancamento], [Preco], [QuantidadeStock]) VALUES(@titulo, @isbn, (SELECT IDCategoria FROM Categorias WHERE Categoria = @categoria), @anoLancamento, @preco, @quantidadeStock)";
+            comm_insert.CommandText = "INSERT INTO Livros(Titulo, ISBN, Categoria, AnoLancamento, Preco, QuantidadeStock) VALUES(@titulo, @isbn, (SELECT IDCategoria FROM Categorias WHERE Categoria = @categoria), @anoLancamento, @preco, @quantidadeStock)";
             //parâmetros do comando definido
             comm_insert.Parameters.AddWithValue("@titulo", L.Titulo);
             comm_insert.Parameters.AddWithValue("@isbn", L.ISBN);
@@ -224,7 +223,7 @@ namespace DAL
             SqlCommand comm_update = new SqlCommand();
             comm_update.Connection = conn;
             comm_update.CommandType = CommandType.Text;
-            comm_update.CommandText = "UPDATE Livros SET Titulo= @titulo, ISBN = @isbn, Categoria = (SELECT IDCategoria FROM Categorias WHERE Categoria = @categoria), AnoLancamento = @anoLancamento, Preco = @preco, QuantidadeStock = @quantidadeStock WHERE [IDLivro] = @idLivro";
+            comm_update.CommandText = "UPDATE Livros SET Titulo= @titulo, ISBN = @isbn, Categoria = (SELECT IDCategoria FROM Categorias WHERE Categoria = @categoria), AnoLancamento = @anoLancamento, Preco = @preco, QuantidadeStock = @quantidadeStock WHERE IDLivro = @idLivro";
             //parâmetros do comando definido
             comm_update.Parameters.AddWithValue("@titulo", L.Titulo);
             comm_update.Parameters.AddWithValue("@isbn", L.ISBN);
@@ -272,7 +271,7 @@ namespace DAL
             SqlCommand comm_count = new SqlCommand();
             comm_count.Connection = conn;
             comm_count.CommandType = CommandType.Text;
-            comm_count.CommandText = "SELECT COUNT(*) FROM AutoresLivros WHERE [Livro] = @idLivro";
+            comm_count.CommandText = "SELECT COUNT(*) FROM AutoresLivros WHERE Livro = @idLivro";
             comm_count.Parameters.AddWithValue("@idLivro", L.IDLivro);
 
             conn.Open();
@@ -311,7 +310,7 @@ namespace DAL
             SqlCommand comm_insert = new SqlCommand();
             comm_insert.Connection = conn;
             comm_insert.CommandType = CommandType.Text;
-            comm_insert.CommandText = "INSERT INTO [AutoresLivros]([Autor], [Livro]) VALUES(( SELECT [IDAutor] FROM [Autores] WHERE [Nome] = @autor), ( SELECT [IDLivro] FROM [Livros] WHERE [Titulo] = @livro))";
+            comm_insert.CommandText = "INSERT INTO AutoresLivros(Autor, Livro) VALUES(( SELECT IDAutor FROM Autores WHERE Nome = @autor), ( SELECT IDLivro FROM Livros WHERE Titulo = @livro))";
             //parâmetros do comando definido
             comm_insert.Parameters.AddWithValue("@autor", AL.Autor);
             comm_insert.Parameters.AddWithValue("@livro", AL.Livro);
@@ -326,7 +325,7 @@ namespace DAL
             SqlCommand comm_update = new SqlCommand();
             comm_update.Connection = conn;
             comm_update.CommandType = CommandType.Text;
-            comm_update.CommandText = "UPDATE [AutoresLivros] SET [Autor] = (SELECT [IDAutor] FROM [Autores] WHERE [Nome] = @autor), [Livro] = (SELECT [IDLivro] FROM [Livros] WHERE [Titulo] = @livro) WHERE [IDAutorLivro] = @idAutorLivro";
+            comm_update.CommandText = "UPDATE AutoresLivros SET Autor = (SELECT IDAutor FROM Autores WHERE Nome = @autor), Livro = (SELECT IDLivro FROM Livros WHERE Titulo = @livro) WHERE IDAutorLivro = @idAutorLivro";
             //parâmetros do comando definido
             comm_update.Parameters.AddWithValue("@autor", AL.Autor);
             comm_update.Parameters.AddWithValue("@livro", AL.Livro);
@@ -342,7 +341,7 @@ namespace DAL
             SqlCommand comm_delete = new SqlCommand();
             comm_delete.Connection = conn;
             comm_delete.CommandType = CommandType.Text;
-            comm_delete.CommandText = "DELETE FROM [AutoresLivros] WHERE [IDAutorLivro] = @idAutorLivro";
+            comm_delete.CommandText = "DELETE FROM AutoresLivros WHERE IDAutorLivro = @idAutorLivro";
             //parâmetros do comando definido
             comm_delete.Parameters.AddWithValue("@idAutorLivro", AL.IDAutorLivro);
             //abrir ligação à base de dados e executar DELETE

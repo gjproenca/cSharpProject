@@ -35,7 +35,10 @@ namespace frontend
                 formLivros.Show();
             }
             else
+            {
+                formLivros.WindowState = FormWindowState.Maximized;
                 formLivros.Activate();
+            }
         }
 
         private void formLivrosClosed(object sender, FormClosedEventArgs e)
@@ -51,11 +54,14 @@ namespace frontend
                 formAutoresLivros = new FormAutoresLivros();
                 formAutoresLivros.MdiParent = this;
                 formAutoresLivros.WindowState = FormWindowState.Maximized;
-                formAutoresLivros.FormClosed += formLivrosClosed;
+                formAutoresLivros.FormClosed += formAutoresLivrosClosed;
                 formAutoresLivros.Show();
             }
             else
+            {
+                formAutoresLivros.WindowState = FormWindowState.Maximized;
                 formAutoresLivros.Activate();
+            }
         }
 
         private void formAutoresLivrosClosed(object sender, FormClosedEventArgs e)
@@ -75,7 +81,10 @@ namespace frontend
                 formAutores.Show();
             }
             else
+            {
+                formAutores.WindowState = FormWindowState.Maximized;
                 formAutores.Activate();
+            }
         }
 
         private void formAutoresClosed(object sender, FormClosedEventArgs e)
@@ -95,7 +104,10 @@ namespace frontend
                 formCategorias.Show();
             }
             else
+            {
+                formCategorias.WindowState = FormWindowState.Maximized;
                 formCategorias.Activate();
+            }
         }
 
         private void formCategoriasClosed(object sender, FormClosedEventArgs e)
