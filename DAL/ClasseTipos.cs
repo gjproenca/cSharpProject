@@ -18,8 +18,8 @@ namespace DAL
     public class AutorLivro
     {
         public int IDAutorLivro { get; set; }
-        public int Autor { get; set; }
-        public int Livro { get; set; }
+        public string Autor { get; set; }
+        public string Livro { get; set; }
     }
 
     public class Livro

@@ -42,8 +42,8 @@ namespace frontend
             comboBoxCategoria.DataSource = livroMetodos.SelecionarCategorias();
             comboBoxCategoria.DisplayMember = "Categoria";
             comboBoxCategoria.ValueMember = "Categoria";
-
             comboBoxCategoria.Text = dataGridViewLivros.CurrentRow.Cells[3].Value.ToString();
+
             textBoxAnoLancamento.Text = dataGridViewLivros.CurrentRow.Cells[4].Value.ToString();
             textBoxPreco.Text = dataGridViewLivros.CurrentRow.Cells[5].Value.ToString();
             textBoxQuantidadeStock.Text = dataGridViewLivros.CurrentRow.Cells[6].Value.ToString();

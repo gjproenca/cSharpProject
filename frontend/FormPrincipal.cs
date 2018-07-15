@@ -19,9 +19,11 @@ namespace frontend
 
         // global variables declaration
         private FormLivros formLivros;
-        private FormCategorias formCategorias;
         private FormAutores formAutores;
+        private FormCategorias formCategorias;
+        private FormAutoresLivros formAutoresLivros;
 
+        // livros
         private void livrosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (formLivros == null)
@@ -39,29 +41,29 @@ namespace frontend
         private void formLivrosClosed(object sender, FormClosedEventArgs e)
         {
             formLivros = null;
-            //throw new NotImplementedException();
         }
 
-        private void categoriasToolStripMenuItem1_Click(object sender, EventArgs e)
+        // autoreslivros
+        private void autoresLivrosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (formCategorias == null)
+            if (formAutoresLivros == null)
             {
-                formCategorias = new FormCategorias();
-                formCategorias.MdiParent = this;
-                formCategorias.WindowState = FormWindowState.Maximized;
-                formCategorias.FormClosed += formCategoriasClosed;
-                formCategorias.Show();
+                formAutoresLivros = new FormAutoresLivros();
+                formAutoresLivros.MdiParent = this;
+                formAutoresLivros.WindowState = FormWindowState.Maximized;
+                formAutoresLivros.FormClosed += formLivrosClosed;
+                formAutoresLivros.Show();
             }
             else
-                formCategorias.Activate();
+                formAutoresLivros.Activate();
         }
 
-        private void formCategoriasClosed(object sender, FormClosedEventArgs e)
+        private void formAutoresLivrosClosed(object sender, FormClosedEventArgs e)
         {
-            formCategorias = null;
-            //throw new NotImplementedException();
+            formAutoresLivros = null;
         }
 
+        // autores
         private void autoresToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (formAutores == null)
@@ -79,7 +81,26 @@ namespace frontend
         private void formAutoresClosed(object sender, FormClosedEventArgs e)
         {
             formAutores = null;
-            //throw new NotImplementedException();
+        }
+
+        // categorias
+        private void categoriasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (formCategorias == null)
+            {
+                formCategorias = new FormCategorias();
+                formCategorias.MdiParent = this;
+                formCategorias.WindowState = FormWindowState.Maximized;
+                formCategorias.FormClosed += formCategoriasClosed;
+                formCategorias.Show();
+            }
+            else
+                formCategorias.Activate();
+        }
+
+        private void formCategoriasClosed(object sender, FormClosedEventArgs e)
+        {
+            formCategorias = null;
         }
     }
 }

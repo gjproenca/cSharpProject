@@ -22,7 +22,6 @@ namespace DAL
             comm_insert.CommandType = CommandType.Text;
             comm_insert.CommandText = "INSERT INTO [Autores]([Nome], [PaisOrigem], [PremioNobel], [ResumoObra]) VALUES(@nome, @paisOrigem," +
                 "@premioNobel, @resumoObra)";
-            //ler valores definidos no controlos TextBox e preencher
             //parâmetros do comando definido
             comm_insert.Parameters.AddWithValue("@nome", A.Nome);
             comm_insert.Parameters.AddWithValue("@paisOrigem", A.PaisOrigem);
@@ -117,7 +116,6 @@ namespace DAL
             comm_insert.Connection = conn;
             comm_insert.CommandType = CommandType.Text;
             comm_insert.CommandText = "INSERT INTO [Categorias]([Categoria], [Descricao]) VALUES(@categoria, @descricao)";
-            //ler valores definidos no controlos TextBox e preencher
             //parâmetros do comando definido
             comm_insert.Parameters.AddWithValue("@categoria", C.NomeCategoria);
             comm_insert.Parameters.AddWithValue("@descricao", C.Descricao);
@@ -208,7 +206,6 @@ namespace DAL
             comm_insert.Connection = conn;
             comm_insert.CommandType = CommandType.Text;
             comm_insert.CommandText = "INSERT INTO [Livros]([Titulo], [ISBN], [Categoria], [AnoLancamento], [Preco], [QuantidadeStock]) VALUES(@titulo, @isbn, (SELECT IDCategoria FROM Categorias WHERE Categoria = @categoria), @anoLancamento, @preco, @quantidadeStock)";
-            //ler valores definidos no controlos TextBox e preencher
             //parâmetros do comando definido
             comm_insert.Parameters.AddWithValue("@titulo", L.Titulo);
             comm_insert.Parameters.AddWithValue("@isbn", L.ISBN);
@@ -309,24 +306,70 @@ namespace DAL
         //My pc
         private SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=Editora;Integrated Security=True");
 
-        public void Inserir(AutorLivro L)
+        public void Inserir(AutorLivro AL)
         {
-
+            SqlCommand comm_insert = new SqlCommand();
+            comm_insert.Connection = conn;
+            comm_insert.CommandType = CommandType.Text;
+            comm_insert.CommandText = "INSERT INTO [AutoresLivros]([Autor], [Livro]) VALUES(( SELECT [IDAutor] FROM [Autores] WHERE [Nome] = @autor), ( SELECT [IDLivro] FROM [Livros] WHERE [Titulo] = @livro))";
+            //parâmetros do comando definido
+            comm_insert.Parameters.AddWithValue("@autor", AL.Autor);
+            comm_insert.Parameters.AddWithValue("@livro", AL.Livro);
+            //abrir ligação à base de dados e executar INSERT
+            conn.Open();
+            comm_insert.ExecuteNonQuery();
+            conn.Close();
         }
 
-        public void Alterar(AutorLivro L)
+        public void Alterar(AutorLivro AL)
         {
-
+            SqlCommand comm_update = new SqlCommand();
+            comm_update.Connection = conn;
+            comm_update.CommandType = CommandType.Text;
+            comm_update.CommandText = "UPDATE [AutoresLivros] SET [Autor] = (SELECT [IDAutor] FROM [Autores] WHERE [Nome] = @autor), [Livro] = (SELECT [IDLivro] FROM [Livros] WHERE [Titulo] = @livro) WHERE [IDAutorLivro] = @idAutorLivro";
+            //parâmetros do comando definido
+            comm_update.Parameters.AddWithValue("@autor", AL.Autor);
+            comm_update.Parameters.AddWithValue("@livro", AL.Livro);
+            comm_update.Parameters.AddWithValue("@idAutorLivro", AL.IDAutorLivro);
+            //abrir ligação à base de dados e executar UPDATE
+            conn.Open();
+            comm_update.ExecuteNonQuery();
+            conn.Close();
         }
 
-        public void Eliminar(AutorLivro L)
+        public void Eliminar(AutorLivro AL)
         {
+            SqlCommand comm_delete = new SqlCommand();
+            comm_delete.Connection = conn;
+            comm_delete.CommandType = CommandType.Text;
+            comm_delete.CommandText = "DELETE FROM [AutoresLivros] WHERE [IDAutorLivro] = @idAutorLivro";
+            //parâmetros do comando definido
+            comm_delete.Parameters.AddWithValue("@idAutorLivro", AL.IDAutorLivro);
+            //abrir ligação à base de dados e executar DELETE
+            conn.Open();
+            comm_delete.ExecuteNonQuery();
+            conn.Close();
+        }
 
+        public DataTable SelecionarAutores()
+        {
+            SqlDataAdapter comando = new SqlDataAdapter("SELECT DISTINCT Nome FROM Autores", conn);
+            DataTable tabela = new DataTable();
+            comando.Fill(tabela);
+            return tabela;
+        }
+
+        public DataTable SelecionarLivros()
+        {
+            SqlDataAdapter comando = new SqlDataAdapter("SELECT DISTINCT Titulo FROM Livros", conn);
+            DataTable tabela = new DataTable();
+            comando.Fill(tabela);
+            return tabela;
         }
 
         public DataTable SelecionarTodos()
         {
-            SqlDataAdapter comando = new SqlDataAdapter("SELECT A.Nome, L.Titulo FROM Autores A JOIN AutoresLivros AL ON AL.Livro = A.IDAutor JOIN Livros L ON L.IDLivro = AL.Livro ORDER BY A.Nome, L.Titulo ASC", conn);
+            SqlDataAdapter comando = new SqlDataAdapter("SELECT AL.IDAutorLivro, A.Nome, L.Titulo FROM AutoresLivros AL JOIN Autores A ON A.IDAutor = AL.Autor JOIN Livros L ON L.IDLivro = AL.Livro ORDER BY A.Nome, L.Titulo ASC", conn);
             DataTable tabela = new DataTable();
             comando.Fill(tabela);
             return tabela;

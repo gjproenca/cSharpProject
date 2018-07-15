@@ -36,6 +36,8 @@
             this.categoriasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.autoresToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.autoresLivrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -54,9 +56,11 @@
             // 
             this.livrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.procurarToolStripMenuItem,
+            this.toolStripMenuItem1,
             this.livrosToolStripMenuItem1,
-            this.categoriasToolStripMenuItem1,
-            this.autoresToolStripMenuItem1});
+            this.autoresToolStripMenuItem1,
+            this.autoresLivrosToolStripMenuItem,
+            this.categoriasToolStripMenuItem1});
             this.livrosToolStripMenuItem.Name = "livrosToolStripMenuItem";
             this.livrosToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.livrosToolStripMenuItem.Text = "Menu";
@@ -64,8 +68,8 @@
             // procurarToolStripMenuItem
             // 
             this.procurarToolStripMenuItem.Name = "procurarToolStripMenuItem";
-            this.procurarToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.procurarToolStripMenuItem.Text = "Procurar";
+            this.procurarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.procurarToolStripMenuItem.Text = "Procurar livro";
             // 
             // livrosToolStripMenuItem1
             // 
@@ -87,6 +91,18 @@
             this.autoresToolStripMenuItem1.Size = new System.Drawing.Size(130, 22);
             this.autoresToolStripMenuItem1.Text = "Autores";
             this.autoresToolStripMenuItem1.Click += new System.EventHandler(this.autoresToolStripMenuItem1_Click);
+            // 
+            // autoresLivrosToolStripMenuItem
+            // 
+            this.autoresLivrosToolStripMenuItem.Name = "autoresLivrosToolStripMenuItem";
+            this.autoresLivrosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.autoresLivrosToolStripMenuItem.Text = "Autores Livros";
+            this.autoresLivrosToolStripMenuItem.Click += new System.EventHandler(this.autoresLivrosToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // FormPrincipal
             // 
@@ -116,5 +132,7 @@
         private System.Windows.Forms.ToolStripMenuItem autoresToolStripMenuItem1;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.ToolStripMenuItem procurarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem autoresLivrosToolStripMenuItem;
     }
 }
