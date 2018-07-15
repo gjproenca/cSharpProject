@@ -55,6 +55,8 @@
             // 
             this.dataGridViewAutores.AllowUserToAddRows = false;
             this.dataGridViewAutores.AllowUserToDeleteRows = false;
+            this.dataGridViewAutores.AllowUserToResizeRows = false;
+            this.dataGridViewAutores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridViewAutores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAutores.Location = new System.Drawing.Point(12, 12);
             this.dataGridViewAutores.MultiSelect = false;
@@ -68,7 +70,7 @@
             // checkBoxNobel
             // 
             this.checkBoxNobel.AutoSize = true;
-            this.checkBoxNobel.Location = new System.Drawing.Point(456, 197);
+            this.checkBoxNobel.Location = new System.Drawing.Point(435, 197);
             this.checkBoxNobel.Name = "checkBoxNobel";
             this.checkBoxNobel.Size = new System.Drawing.Size(15, 14);
             this.checkBoxNobel.TabIndex = 16;
@@ -103,7 +105,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(382, 197);
+            this.label3.Location = new System.Drawing.Point(361, 197);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 13);
             this.label3.TabIndex = 11;

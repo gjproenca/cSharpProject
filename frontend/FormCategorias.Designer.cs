@@ -51,6 +51,8 @@
             // 
             this.dataGridViewCategorias.AllowUserToAddRows = false;
             this.dataGridViewCategorias.AllowUserToDeleteRows = false;
+            this.dataGridViewCategorias.AllowUserToResizeRows = false;
+            this.dataGridViewCategorias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridViewCategorias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCategorias.Location = new System.Drawing.Point(12, 12);
             this.dataGridViewCategorias.MultiSelect = false;

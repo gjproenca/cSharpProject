@@ -41,6 +41,7 @@
             this.textBoxPreco = new System.Windows.Forms.TextBox();
             this.textBoxQuantidadeStock = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.inserirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alterarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,7 +49,6 @@
             this.limparCamposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comboBoxCategoria = new System.Windows.Forms.ComboBox();
             this.textBoxAnoLancamento = new System.Windows.Forms.TextBox();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLivros)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -59,6 +59,8 @@
             // 
             this.dataGridViewLivros.AllowUserToAddRows = false;
             this.dataGridViewLivros.AllowUserToDeleteRows = false;
+            this.dataGridViewLivros.AllowUserToResizeRows = false;
+            this.dataGridViewLivros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridViewLivros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewLivros.Location = new System.Drawing.Point(13, 13);
             this.dataGridViewLivros.MultiSelect = false;
@@ -167,6 +169,12 @@
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(22, 20);
+            this.toolStripMenuItem2.Text = "|";
+            // 
             // inserirToolStripMenuItem
             // 
             this.inserirToolStripMenuItem.Name = "inserirToolStripMenuItem";
@@ -215,12 +223,6 @@
             this.textBoxAnoLancamento.Name = "textBoxAnoLancamento";
             this.textBoxAnoLancamento.Size = new System.Drawing.Size(124, 20);
             this.textBoxAnoLancamento.TabIndex = 2;
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(22, 20);
-            this.toolStripMenuItem2.Text = "|";
             // 
             // errorProvider1
             // 

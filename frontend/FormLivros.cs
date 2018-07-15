@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -51,7 +52,6 @@ namespace frontend
 
         private void setLivro()
         {
-            // TODO: validations
             livro.IDLivro = int.Parse(dataGridViewLivros.CurrentRow.Cells[0].Value.ToString());
             livro.Titulo = textBoxTitulo.Text;
             livro.ISBN = textBoxIsbn.Text;
@@ -67,34 +67,110 @@ namespace frontend
             livro.QuantidadeStock = quantidadeStock;
         }
 
-        private void inserirToolStripMenuItem_Click(object sender, EventArgs e)
+        private Boolean validarCampos()
         {
-            if(textBoxTitulo.Text == "")
+            Boolean validarTitulo = false;
+            Boolean validarIsbn = false;
+            Boolean validarPreco = false;
+            Boolean validarQuantidadeStock = false;
+
+            Regex validar = new Regex("(ISBN[-]*(1[03])*[ ]*(: ){0,1})*(([0-9Xx][- ]*){13}|([0-9Xx][- ]*){10})");
+
+            if (textBoxTitulo.Text == "")
             {
-                errorProvider1.SetError(textBoxTitulo, "vazio");
+                errorProvider1.SetError(textBoxTitulo, "Campo obrigatório!");
             }
             else
             {
                 errorProvider1.SetError(textBoxTitulo, "");
+                validarTitulo = true;
             }
 
-            setLivro();
+            if (textBoxIsbn.Text == "")
+            {
+                errorProvider1.SetError(textBoxIsbn, "Campo obrigatório!");
+            }
+            else if (validar.IsMatch(textBoxIsbn.Text) == false)
+            {
+                errorProvider1.SetError(textBoxIsbn, "Formato inválido!");
+            }
+            else
+            {
+                errorProvider1.SetError(textBoxIsbn, "");
+                validarIsbn = true;
+            }
 
-            livroMetodos.Inserir(livro);
+            if (textBoxPreco.Text == "")
+            {
+                errorProvider1.SetError(textBoxPreco, "Campo obrigatório!");
+            }
+            else if (Decimal.TryParse(textBoxPreco.Text, out decimal tempPreco) == false)
+            {
+                errorProvider1.SetError(textBoxPreco, "Formato inválido!");
+            }
+            else if (tempPreco <= 0)
+            {
+                errorProvider1.SetError(textBoxPreco, "O preço tem de ser superior a zero!");
+            }
+            else
+            {
+                errorProvider1.SetError(textBoxPreco, "");
+                validarPreco = true;
+            }
 
-            dataGridViewLivros.DataSource = livroMetodos.SelecionarTodos();
-            preencherCampos();
+            if (textBoxQuantidadeStock.Text == "")
+            {
+                errorProvider1.SetError(textBoxQuantidadeStock, "Campo obrigatório!");
+            }
+            else if (int.TryParse(textBoxQuantidadeStock.Text, out int tempQuantidadeStock) == false)
+            {
+                errorProvider1.SetError(textBoxQuantidadeStock, "Formato inválido!");
+            }
+            else if (tempQuantidadeStock < 0)
+            {
+                errorProvider1.SetError(textBoxQuantidadeStock, "A quantidade de stock tem de ser igual ou superior a zero!");
+            }
+            else
+            {
+                errorProvider1.SetError(textBoxQuantidadeStock, "");
+                validarQuantidadeStock = true;
+            }
+
+            if (validarTitulo == true && validarIsbn == true && validarPreco == true && validarQuantidadeStock == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void inserirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (validarCampos() == true)
+            {
+                setLivro();
+
+                livroMetodos.Inserir(livro);
+
+                dataGridViewLivros.DataSource = livroMetodos.SelecionarTodos();
+                preencherCampos();
+            }
         }
 
         private void alterarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Tem a certeza que deseja alterar este livro?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (validarCampos() == true)
             {
-                setLivro();
-                livroMetodos.Alterar(livro);
+                if (MessageBox.Show("Tem a certeza que deseja alterar este livro?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    setLivro();
+                    livroMetodos.Alterar(livro);
 
-                dataGridViewLivros.DataSource = livroMetodos.SelecionarTodos();
-                preencherCampos();
+                    dataGridViewLivros.DataSource = livroMetodos.SelecionarTodos();
+                    preencherCampos();
+                }
             }
         }
 
@@ -135,17 +211,9 @@ namespace frontend
                 {
                     c.Text = "";
                 }
-
-                if (c is CheckBox)
-                {
-                    // TODO: checkbox clear
-                }
-
-                if (c is ComboBox)
-                {
-                    c.Text = "";
-                }
             }
+
+            comboBoxCategoria.SelectedIndex = 0;
         }
     }
 }

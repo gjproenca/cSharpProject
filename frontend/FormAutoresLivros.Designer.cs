@@ -48,6 +48,8 @@
             // 
             this.dataGridViewAutoresLivros.AllowUserToAddRows = false;
             this.dataGridViewAutoresLivros.AllowUserToDeleteRows = false;
+            this.dataGridViewAutoresLivros.AllowUserToResizeRows = false;
+            this.dataGridViewAutoresLivros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridViewAutoresLivros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAutoresLivros.Location = new System.Drawing.Point(13, 13);
             this.dataGridViewAutoresLivros.MultiSelect = false;

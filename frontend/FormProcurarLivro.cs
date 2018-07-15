@@ -30,11 +30,28 @@ namespace frontend
             procurarLivro.Titulo = textBoxTitulo.Text;
         }
 
+        private Boolean validarCampos()
+        {
+            if (textBoxTitulo.Text == "")
+            {
+                errorProvider1.SetError(textBoxTitulo, "Campo obrigatório!");
+                return false;
+            }
+            else
+            {
+                errorProvider1.SetError(textBoxTitulo, "");
+                return true;
+            }
+        }
+
         private void procurarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            setProcurarLivro();
+            if (validarCampos() == true)
+            {
+                setProcurarLivro();
 
-            dataGridViewProcurarLivro.DataSource = procurarLivroMetodos.ProcurarLivro(procurarLivro);
+                dataGridViewProcurarLivro.DataSource = procurarLivroMetodos.ProcurarLivro(procurarLivro);
+            }
         }
 
         private void limparCampoToolStripMenuItem_Click(object sender, EventArgs e)

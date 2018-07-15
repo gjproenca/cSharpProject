@@ -88,13 +88,8 @@ namespace frontend
 
         private void limparCamposToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            foreach (Control c in this.Controls)
-            {
-                if (c is ComboBox)
-                {
-                    c.Text = "";
-                }
-            }
+            comboBoxAutor.SelectedIndex = 0;
+            comboBoxLivro.SelectedIndex = 0;
         }
     }
 }

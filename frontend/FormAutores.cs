@@ -229,17 +229,11 @@ namespace frontend
                 {
                     c.Text = "";
                 }
-
-                if (c is CheckBox)
-                {
-                    // TODO: checkbox clear
-                }
-
-                if (c is ComboBox)
-                {
-                    c.Text = "";
-                }
             }
+
+            comboBoxPaises.SelectedIndex = 0;
+
+            checkBoxNobel.Checked = false;
         }
     }
 }
