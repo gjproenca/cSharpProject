@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridViewCategorias = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,8 +41,10 @@
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.limparCamposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCategorias)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewCategorias
@@ -54,7 +57,7 @@
             this.dataGridViewCategorias.Name = "dataGridViewCategorias";
             this.dataGridViewCategorias.ReadOnly = true;
             this.dataGridViewCategorias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewCategorias.Size = new System.Drawing.Size(468, 150);
+            this.dataGridViewCategorias.Size = new System.Drawing.Size(460, 150);
             this.dataGridViewCategorias.TabIndex = 0;
             this.dataGridViewCategorias.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCategorias_CellClick);
             // 
@@ -80,7 +83,7 @@
             // 
             this.textBoxCategoria.Location = new System.Drawing.Point(70, 172);
             this.textBoxCategoria.Name = "textBoxCategoria";
-            this.textBoxCategoria.Size = new System.Drawing.Size(411, 20);
+            this.textBoxCategoria.Size = new System.Drawing.Size(380, 20);
             this.textBoxCategoria.TabIndex = 3;
             // 
             // textBoxDescricao
@@ -88,7 +91,8 @@
             this.textBoxDescricao.Location = new System.Drawing.Point(70, 198);
             this.textBoxDescricao.Multiline = true;
             this.textBoxDescricao.Name = "textBoxDescricao";
-            this.textBoxDescricao.Size = new System.Drawing.Size(411, 50);
+            this.textBoxDescricao.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxDescricao.Size = new System.Drawing.Size(380, 50);
             this.textBoxDescricao.TabIndex = 4;
             // 
             // menuStrip1
@@ -101,9 +105,9 @@
             this.eliminarToolStripMenuItem,
             this.toolStripMenuItem2,
             this.limparCamposToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 537);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 307);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(484, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -147,11 +151,15 @@
             this.limparCamposToolStripMenuItem.Text = "Limpar campos";
             this.limparCamposToolStripMenuItem.Click += new System.EventHandler(this.limparCamposToolStripMenuItem_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // FormCategorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(484, 331);
             this.ControlBox = false;
             this.Controls.Add(this.textBoxDescricao);
             this.Controls.Add(this.textBoxCategoria);
@@ -168,6 +176,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCategorias)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,5 +196,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem limparCamposToolStripMenuItem;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridViewLivros = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,8 +48,11 @@
             this.limparCamposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comboBoxCategoria = new System.Windows.Forms.ComboBox();
             this.textBoxAnoLancamento = new System.Windows.Forms.TextBox();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLivros)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewLivros
@@ -61,7 +65,7 @@
             this.dataGridViewLivros.Name = "dataGridViewLivros";
             this.dataGridViewLivros.ReadOnly = true;
             this.dataGridViewLivros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewLivros.Size = new System.Drawing.Size(759, 150);
+            this.dataGridViewLivros.Size = new System.Drawing.Size(459, 150);
             this.dataGridViewLivros.TabIndex = 0;
             this.dataGridViewLivros.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLivros_CellClick);
             // 
@@ -123,42 +127,43 @@
             // 
             this.textBoxIsbn.Location = new System.Drawing.Point(70, 195);
             this.textBoxIsbn.Name = "textBoxIsbn";
-            this.textBoxIsbn.Size = new System.Drawing.Size(397, 20);
+            this.textBoxIsbn.Size = new System.Drawing.Size(378, 20);
             this.textBoxIsbn.TabIndex = 2;
             // 
             // textBoxTitulo
             // 
             this.textBoxTitulo.Location = new System.Drawing.Point(70, 169);
             this.textBoxTitulo.Name = "textBoxTitulo";
-            this.textBoxTitulo.Size = new System.Drawing.Size(397, 20);
+            this.textBoxTitulo.Size = new System.Drawing.Size(378, 20);
             this.textBoxTitulo.TabIndex = 2;
             // 
             // textBoxPreco
             // 
             this.textBoxPreco.Location = new System.Drawing.Point(70, 247);
             this.textBoxPreco.Name = "textBoxPreco";
-            this.textBoxPreco.Size = new System.Drawing.Size(134, 20);
+            this.textBoxPreco.Size = new System.Drawing.Size(118, 20);
             this.textBoxPreco.TabIndex = 2;
             // 
             // textBoxQuantidadeStock
             // 
             this.textBoxQuantidadeStock.Location = new System.Drawing.Point(324, 249);
             this.textBoxQuantidadeStock.Name = "textBoxQuantidadeStock";
-            this.textBoxQuantidadeStock.Size = new System.Drawing.Size(143, 20);
+            this.textBoxQuantidadeStock.Size = new System.Drawing.Size(124, 20);
             this.textBoxQuantidadeStock.TabIndex = 2;
             // 
             // menuStrip1
             // 
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2,
             this.inserirToolStripMenuItem,
             this.alterarToolStripMenuItem,
             this.eliminarToolStripMenuItem,
             this.toolStripMenuItem1,
             this.limparCamposToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 537);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 307);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(484, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -201,21 +206,31 @@
             this.comboBoxCategoria.FormattingEnabled = true;
             this.comboBoxCategoria.Location = new System.Drawing.Point(71, 220);
             this.comboBoxCategoria.Name = "comboBoxCategoria";
-            this.comboBoxCategoria.Size = new System.Drawing.Size(133, 21);
+            this.comboBoxCategoria.Size = new System.Drawing.Size(117, 21);
             this.comboBoxCategoria.TabIndex = 5;
             // 
             // textBoxAnoLancamento
             // 
             this.textBoxAnoLancamento.Location = new System.Drawing.Point(324, 221);
             this.textBoxAnoLancamento.Name = "textBoxAnoLancamento";
-            this.textBoxAnoLancamento.Size = new System.Drawing.Size(143, 20);
+            this.textBoxAnoLancamento.Size = new System.Drawing.Size(124, 20);
             this.textBoxAnoLancamento.TabIndex = 2;
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(22, 20);
+            this.toolStripMenuItem2.Text = "|";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // FormLivros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(484, 331);
             this.ControlBox = false;
             this.Controls.Add(this.comboBoxCategoria);
             this.Controls.Add(this.textBoxTitulo);
@@ -240,6 +255,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLivros)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -266,5 +282,7 @@
         private System.Windows.Forms.TextBox textBoxAnoLancamento;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem limparCamposToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

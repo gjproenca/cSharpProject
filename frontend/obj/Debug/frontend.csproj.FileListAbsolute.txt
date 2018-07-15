@@ -48,3 +48,4 @@ J:\programador de informatica\C#\avaliacao\csharp-avaliacao\frontend\obj\Debug\F
 J:\programador de informatica\C#\avaliacao\csharp-avaliacao\frontend\obj\Debug\frontend.exe
 J:\programador de informatica\C#\avaliacao\csharp-avaliacao\frontend\obj\Debug\frontend.pdb
 J:\programador de informatica\C#\avaliacao\csharp-avaliacao\frontend\obj\Debug\frontend.FormAutoresLivros.resources
+J:\programador de informatica\C#\avaliacao\csharp-avaliacao\frontend\obj\Debug\frontend.FormProcurarLivro.resources

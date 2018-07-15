@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridViewAutores = new System.Windows.Forms.DataGridView();
             this.checkBoxNobel = new System.Windows.Forms.CheckBox();
             this.textBoxResumoObra = new System.Windows.Forms.TextBox();
@@ -44,8 +45,10 @@
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.limparToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAutores)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewAutores
@@ -58,7 +61,7 @@
             this.dataGridViewAutores.Name = "dataGridViewAutores";
             this.dataGridViewAutores.ReadOnly = true;
             this.dataGridViewAutores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewAutores.Size = new System.Drawing.Size(758, 150);
+            this.dataGridViewAutores.Size = new System.Drawing.Size(459, 150);
             this.dataGridViewAutores.TabIndex = 0;
             this.dataGridViewAutores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAutores_CellClick);
             // 
@@ -74,16 +77,18 @@
             // textBoxResumoObra
             // 
             this.textBoxResumoObra.Location = new System.Drawing.Point(102, 221);
+            this.textBoxResumoObra.MaxLength = 2500;
             this.textBoxResumoObra.Multiline = true;
             this.textBoxResumoObra.Name = "textBoxResumoObra";
-            this.textBoxResumoObra.Size = new System.Drawing.Size(369, 65);
+            this.textBoxResumoObra.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxResumoObra.Size = new System.Drawing.Size(348, 51);
             this.textBoxResumoObra.TabIndex = 15;
             // 
             // textBoxNome
             // 
             this.textBoxNome.Location = new System.Drawing.Point(102, 168);
             this.textBoxNome.Name = "textBoxNome";
-            this.textBoxNome.Size = new System.Drawing.Size(369, 20);
+            this.textBoxNome.Size = new System.Drawing.Size(348, 20);
             this.textBoxNome.TabIndex = 14;
             // 
             // label4
@@ -127,7 +132,7 @@
             this.comboBoxPaises.FormattingEnabled = true;
             this.comboBoxPaises.Location = new System.Drawing.Point(102, 194);
             this.comboBoxPaises.Name = "comboBoxPaises";
-            this.comboBoxPaises.Size = new System.Drawing.Size(274, 21);
+            this.comboBoxPaises.Size = new System.Drawing.Size(253, 21);
             this.comboBoxPaises.TabIndex = 9;
             // 
             // menuStrip1
@@ -140,9 +145,9 @@
             this.eliminarToolStripMenuItem,
             this.toolStripMenuItem2,
             this.limparToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 537);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 307);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(484, 24);
             this.menuStrip1.TabIndex = 17;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -186,11 +191,15 @@
             this.limparToolStripMenuItem.Text = "Limpar campos";
             this.limparToolStripMenuItem.Click += new System.EventHandler(this.limparToolStripMenuItem_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // FormAutores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(484, 331);
             this.ControlBox = false;
             this.Controls.Add(this.checkBoxNobel);
             this.Controls.Add(this.textBoxResumoObra);
@@ -210,6 +219,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAutores)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,5 +243,6 @@
         private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem limparToolStripMenuItem;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

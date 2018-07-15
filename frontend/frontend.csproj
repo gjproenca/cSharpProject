@@ -48,11 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutoresLivros.cs">
+    <Compile Include="FormAutoresLivros.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AutoresLivros.Designer.cs">
-      <DependentUpon>AutoresLivros.cs</DependentUpon>
+    <Compile Include="FormAutoresLivros.Designer.cs">
+      <DependentUpon>FormAutoresLivros.cs</DependentUpon>
     </Compile>
     <Compile Include="FormAutores.cs">
       <SubType>Form</SubType>
@@ -78,10 +78,16 @@
     <Compile Include="FormPrincipal.Designer.cs">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormProcurarLivro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProcurarLivro.Designer.cs">
+      <DependentUpon>FormProcurarLivro.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AutoresLivros.resx">
-      <DependentUpon>AutoresLivros.cs</DependentUpon>
+    <EmbeddedResource Include="FormAutoresLivros.resx">
+      <DependentUpon>FormAutoresLivros.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAutores.resx">
       <DependentUpon>FormAutores.cs</DependentUpon>
@@ -94,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProcurarLivro.resx">
+      <DependentUpon>FormProcurarLivro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -22,6 +22,7 @@ namespace frontend
         private FormAutores formAutores;
         private FormCategorias formCategorias;
         private FormAutoresLivros formAutoresLivros;
+        private FormProcurarLivro formProcurarLivro;
 
         // livros
         private void livrosToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -111,6 +112,28 @@ namespace frontend
         }
 
         private void formCategoriasClosed(object sender, FormClosedEventArgs e)
+        {
+            formCategorias = null;
+        }
+
+        private void procurarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (formProcurarLivro == null)
+            {
+                formProcurarLivro = new FormProcurarLivro();
+                formProcurarLivro.MdiParent = this;
+                formProcurarLivro.WindowState = FormWindowState.Maximized;
+                formProcurarLivro.FormClosed += formProcurarLivroClosed;
+                formProcurarLivro.Show();
+            }
+            else
+            {
+                formProcurarLivro.WindowState = FormWindowState.Maximized;
+                formProcurarLivro.Activate();
+            }
+        }
+
+        private void formProcurarLivroClosed(object sender, FormClosedEventArgs e)
         {
             formCategorias = null;
         }

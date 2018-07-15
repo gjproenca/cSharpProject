@@ -56,7 +56,6 @@ namespace frontend
         private void inserirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             setAutorLivro();
-
             autorLivroMetodos.Inserir(autorLivro);
 
             dataGridViewAutoresLivros.DataSource = autorLivroMetodos.SelecionarTodos();
@@ -65,22 +64,26 @@ namespace frontend
 
         private void alterarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            setAutorLivro();
+            if (MessageBox.Show("Tem a certeza que deseja alterar este registo?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                setAutorLivro();
+                autorLivroMetodos.Alterar(autorLivro);
 
-            autorLivroMetodos.Alterar(autorLivro);
-
-            dataGridViewAutoresLivros.DataSource = autorLivroMetodos.SelecionarTodos();
-            preencherCampos();
+                dataGridViewAutoresLivros.DataSource = autorLivroMetodos.SelecionarTodos();
+                preencherCampos();
+            }
         }
 
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            setAutorLivro();
+            if (MessageBox.Show("Tem a certeza que deseja eliminar este registo?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                setAutorLivro();
+                autorLivroMetodos.Eliminar(autorLivro);
 
-            autorLivroMetodos.Eliminar(autorLivro);
-
-            dataGridViewAutoresLivros.DataSource = autorLivroMetodos.SelecionarTodos();
-            preencherCampos();
+                dataGridViewAutoresLivros.DataSource = autorLivroMetodos.SelecionarTodos();
+                preencherCampos();
+            }
         }
 
         private void limparCamposToolStripMenuItem_Click(object sender, EventArgs e)

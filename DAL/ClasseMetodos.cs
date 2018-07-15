@@ -374,4 +374,28 @@ namespace DAL
             return tabela;
         }
     }
+
+    public class ProcurarLivroMetodos
+    {
+        //Other pcs
+        //private SqlConnection conn = new SqlConnection(@"Data Source=.\sqlexpress;Initial Catalog=Editora;Integrated Security=True");
+        //My pc
+        private SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=Editora;Integrated Security=True");
+
+        public DataTable ProcurarLivro(ProcurarLivro PL)
+        {
+            SqlDataAdapter comando = new SqlDataAdapter("SELECT L.IDLivro, L.Titulo, L.ISBN, C.Categoria, L.AnoLancamento, L.Preco, L.QuantidadeStock FROM Livros L JOIN Categorias C  ON L.Categoria = C.IDCategoria WHERE L.Titulo LIKE '%" + PL.Titulo + "%' ORDER BY Titulo ASC", conn);
+            DataTable tabela = new DataTable();
+            comando.Fill(tabela);
+            return tabela;
+        }
+
+        public DataTable SelecionarTodos()
+        {
+            SqlDataAdapter comando = new SqlDataAdapter("SELECT L.IDLivro, L.Titulo, L.ISBN, C.Categoria, L.AnoLancamento, L.Preco, L.QuantidadeStock FROM Livros L JOIN Categorias C  ON L.Categoria = C.IDCategoria ORDER BY Titulo ASC", conn);
+            DataTable tabela = new DataTable();
+            comando.Fill(tabela);
+            return tabela;
+        }
+    }
 }

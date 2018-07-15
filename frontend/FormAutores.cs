@@ -54,6 +54,41 @@ namespace frontend
             autor.PaisOrigem = comboBoxPaises.Text;
         }
 
+        private Boolean validarCampos()
+        {
+            Boolean validarNome = false;
+            Boolean validarResumoObra = false;
+
+            if (textBoxNome.Text == "")
+            {
+                errorProvider1.SetError(textBoxNome, "Campo obrigatório!");
+            }
+            else
+            {
+                errorProvider1.SetError(textBoxNome, "");
+                validarNome = true;
+            }
+
+            if (textBoxResumoObra.TextLength < 250)
+            {
+                errorProvider1.SetError(textBoxResumoObra, "Mínimo 250 carateres!");
+            }
+            else
+            {
+                errorProvider1.SetError(textBoxResumoObra, "");
+                validarResumoObra = true;
+            }
+
+            if (validarNome == true && validarResumoObra == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         #region Paises
         void PreencherPaises()
         {
@@ -131,23 +166,29 @@ namespace frontend
 
         private void inserirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            setAutor();
+            if (validarCampos() == true)
+            {
+                setAutor();
 
-            autorMetodos.Inserir(autor);
+                autorMetodos.Inserir(autor);
 
-            dataGridViewAutores.DataSource = autorMetodos.SelecionarTodos();
-            preencherCampos();
+                dataGridViewAutores.DataSource = autorMetodos.SelecionarTodos();
+                preencherCampos();
+            }
         }
 
         private void alterarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Tem a certeza que deseja alterar este autor?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (validarCampos() == true)
             {
-                setAutor();
-                autorMetodos.Alterar(autor);
+                if (MessageBox.Show("Tem a certeza que deseja alterar este autor?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    setAutor();
+                    autorMetodos.Alterar(autor);
 
-                dataGridViewAutores.DataSource = autorMetodos.SelecionarTodos();
-                preencherCampos();
+                    dataGridViewAutores.DataSource = autorMetodos.SelecionarTodos();
+                    preencherCampos();
+                }
             }
         }
 

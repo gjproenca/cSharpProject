@@ -54,7 +54,7 @@
             this.dataGridViewAutoresLivros.Name = "dataGridViewAutoresLivros";
             this.dataGridViewAutoresLivros.ReadOnly = true;
             this.dataGridViewAutoresLivros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewAutoresLivros.Size = new System.Drawing.Size(713, 150);
+            this.dataGridViewAutoresLivros.Size = new System.Drawing.Size(459, 150);
             this.dataGridViewAutoresLivros.TabIndex = 0;
             this.dataGridViewAutoresLivros.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAutoresLivros_CellClick);
             // 
@@ -72,7 +72,7 @@
             this.comboBoxAutor.FormattingEnabled = true;
             this.comboBoxAutor.Location = new System.Drawing.Point(50, 169);
             this.comboBoxAutor.Name = "comboBoxAutor";
-            this.comboBoxAutor.Size = new System.Drawing.Size(451, 21);
+            this.comboBoxAutor.Size = new System.Drawing.Size(397, 21);
             this.comboBoxAutor.TabIndex = 2;
             // 
             // label2
@@ -89,7 +89,7 @@
             this.comboBoxLivro.FormattingEnabled = true;
             this.comboBoxLivro.Location = new System.Drawing.Point(50, 196);
             this.comboBoxLivro.Name = "comboBoxLivro";
-            this.comboBoxLivro.Size = new System.Drawing.Size(451, 21);
+            this.comboBoxLivro.Size = new System.Drawing.Size(397, 21);
             this.comboBoxLivro.TabIndex = 2;
             // 
             // menuStrip1
@@ -102,9 +102,9 @@
             this.eliminarToolStripMenuItem,
             this.toolStripMenuItem2,
             this.limparCamposToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 537);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 307);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(484, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -152,7 +152,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(484, 331);
             this.ControlBox = false;
             this.Controls.Add(this.comboBoxLivro);
             this.Controls.Add(this.label2);

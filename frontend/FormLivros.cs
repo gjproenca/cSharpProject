@@ -69,6 +69,15 @@ namespace frontend
 
         private void inserirToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if(textBoxTitulo.Text == "")
+            {
+                errorProvider1.SetError(textBoxTitulo, "vazio");
+            }
+            else
+            {
+                errorProvider1.SetError(textBoxTitulo, "");
+            }
+
             setLivro();
 
             livroMetodos.Inserir(livro);

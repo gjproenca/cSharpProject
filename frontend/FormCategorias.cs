@@ -42,6 +42,20 @@ namespace frontend
             categoria.Descricao = textBoxDescricao.Text;
         }
 
+        private Boolean validarCampos()
+        {
+            if (textBoxCategoria.Text == "")
+            {
+                errorProvider1.SetError(textBoxCategoria, "Campo obrigatório!");
+                return false;
+            }
+            else
+            {
+                errorProvider1.SetError(textBoxCategoria, "");
+                return true;
+            }
+        }
+
         private void preencherCampos()
         {
             textBoxCategoria.Text = dataGridViewCategorias.CurrentRow.Cells[1].Value.ToString();
@@ -50,24 +64,30 @@ namespace frontend
 
         private void inserirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            setCategoria();
+            if (validarCampos() == true)
+            {
+                setCategoria();
 
-            categoriaMetodos.Inserir(categoria);
+                categoriaMetodos.Inserir(categoria);
 
-            dataGridViewCategorias.DataSource = categoriaMetodos.SelecionarTodos();
-            preencherCampos();
+                dataGridViewCategorias.DataSource = categoriaMetodos.SelecionarTodos();
+                preencherCampos();
+            }
         }
 
         private void alterarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Tem a certeza que deseja alterar esta categoria?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (validarCampos() == true)
             {
-                setCategoria();
+                if (MessageBox.Show("Tem a certeza que deseja alterar esta categoria?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    setCategoria();
 
-                categoriaMetodos.Alterar(categoria);
+                    categoriaMetodos.Alterar(categoria);
 
-                dataGridViewCategorias.DataSource = categoriaMetodos.SelecionarTodos();
-                preencherCampos();
+                    dataGridViewCategorias.DataSource = categoriaMetodos.SelecionarTodos();
+                    preencherCampos();
+                }
             }
         }
 

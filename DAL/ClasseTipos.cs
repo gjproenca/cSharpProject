@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
+    public class ProcurarLivro
+    {
+        public String Titulo { get; set; }
+    }
+
     public class Autor
     {
         public int IDAutor { get; set; }
