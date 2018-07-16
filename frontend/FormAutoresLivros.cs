@@ -56,29 +56,46 @@ namespace frontend
         private void inserirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             setAutorLivro();
-            autorLivroMetodos.Inserir(autorLivro);
 
-            dataGridViewAutoresLivros.DataSource = autorLivroMetodos.SelecionarTodos();
-            preencherCampos();
-        }
-
-        private void alterarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Tem a certeza que deseja alterar este registo?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (autorLivroMetodos.verificarDuplicado(autorLivro) > 0)
             {
-                setAutorLivro();
-                autorLivroMetodos.Alterar(autorLivro);
+                MessageBox.Show("Este registo já existe!", "Erro!", MessageBoxButtons.OK);
+            }
+            else
+            {
+                autorLivroMetodos.Inserir(autorLivro);
 
                 dataGridViewAutoresLivros.DataSource = autorLivroMetodos.SelecionarTodos();
                 preencherCampos();
             }
         }
 
+        private void alterarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            setAutorLivro();
+
+            if (autorLivroMetodos.verificarDuplicado(autorLivro) > 0)
+            {
+                MessageBox.Show("Este registo já existe!", "Erro!", MessageBoxButtons.OK);
+            }
+            else
+            {
+                if (MessageBox.Show("Tem a certeza que deseja alterar este registo?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    autorLivroMetodos.Alterar(autorLivro);
+
+                    dataGridViewAutoresLivros.DataSource = autorLivroMetodos.SelecionarTodos();
+                    preencherCampos();
+                }
+            }
+        }
+
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            setAutorLivro();
+
             if (MessageBox.Show("Tem a certeza que deseja eliminar este registo?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                setAutorLivro();
                 autorLivroMetodos.Eliminar(autorLivro);
 
                 dataGridViewAutoresLivros.DataSource = autorLivroMetodos.SelecionarTodos();

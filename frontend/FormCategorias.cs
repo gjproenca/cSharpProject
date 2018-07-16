@@ -64,26 +64,17 @@ namespace frontend
 
         private void inserirToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            setCategoria();
+
             if (validarCampos() == true)
             {
-                setCategoria();
-
-                categoriaMetodos.Inserir(categoria);
-
-                dataGridViewCategorias.DataSource = categoriaMetodos.SelecionarTodos();
-                preencherCampos();
-            }
-        }
-
-        private void alterarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (validarCampos() == true)
-            {
-                if (MessageBox.Show("Tem a certeza que deseja alterar esta categoria?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (categoriaMetodos.verificarDuplicado(categoria) > 0)
                 {
-                    setCategoria();
-
-                    categoriaMetodos.Alterar(categoria);
+                    MessageBox.Show("Esta categoria já existe!", "Erro!", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    categoriaMetodos.Inserir(categoria);
 
                     dataGridViewCategorias.DataSource = categoriaMetodos.SelecionarTodos();
                     preencherCampos();
@@ -91,14 +82,38 @@ namespace frontend
             }
         }
 
+        private void alterarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            setCategoria();
+
+            if (validarCampos() == true)
+            {
+                if (categoriaMetodos.verificarDuplicado(categoria) > 0)
+                {
+                    MessageBox.Show("Esta categoria já existe!", "Erro!", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    if (MessageBox.Show("Tem a certeza que deseja alterar esta categoria?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        categoriaMetodos.Alterar(categoria);
+
+                        dataGridViewCategorias.DataSource = categoriaMetodos.SelecionarTodos();
+                        preencherCampos();
+                    }
+                }
+            }
+        }
+
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            setCategoria();
+
             if (categoriaMetodos.ContarLivros(categoria) > 0)
             {
                 if (MessageBox.Show("Esta categoria tem outros registos associados, deseja apagar a categoria e todos os registos associados?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    setCategoria();
-
+                    // FIXME: not able to delete books with entries in autores livros, might need to delete author aswell
                     categoriaMetodos.EliminarLivros(categoria);
                     categoriaMetodos.Eliminar(categoria);
 
@@ -110,8 +125,6 @@ namespace frontend
             {
                 if (MessageBox.Show("Tem a certeza que deseja eliminar esta categoria?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    setCategoria();
-
                     categoriaMetodos.Eliminar(categoria);
 
                     dataGridViewCategorias.DataSource = categoriaMetodos.SelecionarTodos();

@@ -166,25 +166,17 @@ namespace frontend
 
         private void inserirToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            setAutor();
+
             if (validarCampos() == true)
             {
-                setAutor();
-
-                autorMetodos.Inserir(autor);
-
-                dataGridViewAutores.DataSource = autorMetodos.SelecionarTodos();
-                preencherCampos();
-            }
-        }
-
-        private void alterarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (validarCampos() == true)
-            {
-                if (MessageBox.Show("Tem a certeza que deseja alterar este autor?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (autorMetodos.verificarDuplicado(autor) > 0)
                 {
-                    setAutor();
-                    autorMetodos.Alterar(autor);
+                    MessageBox.Show("Este autor já existe!", "Erro!", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    autorMetodos.Inserir(autor);
 
                     dataGridViewAutores.DataSource = autorMetodos.SelecionarTodos();
                     preencherCampos();
@@ -192,14 +184,37 @@ namespace frontend
             }
         }
 
+        private void alterarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            setAutor();
+
+            if (validarCampos() == true)
+            {
+                if (autorMetodos.verificarDuplicado(autor) > 0)
+                {
+                    MessageBox.Show("Este autor já existe!", "Erro!", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    if (MessageBox.Show("Tem a certeza que deseja alterar este autor?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        autorMetodos.Alterar(autor);
+
+                        dataGridViewAutores.DataSource = autorMetodos.SelecionarTodos();
+                        preencherCampos();
+                    }
+                }
+            }
+        }
+
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            setAutor();
+
             if (autorMetodos.ContarLivros(autor) > 0)
             {
                 if (MessageBox.Show("Este autor tem outros registos associados, deseja apagar o autor e todos os registos associados?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    setAutor();
-
                     autorMetodos.EliminarAutoresLivros(autor);
                     autorMetodos.Eliminar(autor);
 
@@ -211,8 +226,6 @@ namespace frontend
             {
                 if (MessageBox.Show("Tem a certeza que deseja eliminar este autor?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    setAutor();
-
                     autorMetodos.Eliminar(autor);
 
                     dataGridViewAutores.DataSource = autorMetodos.SelecionarTodos();

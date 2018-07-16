@@ -148,25 +148,17 @@ namespace frontend
 
         private void inserirToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            setLivro();
+
             if (validarCampos() == true)
             {
-                setLivro();
-
-                livroMetodos.Inserir(livro);
-
-                dataGridViewLivros.DataSource = livroMetodos.SelecionarTodos();
-                preencherCampos();
-            }
-        }
-
-        private void alterarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (validarCampos() == true)
-            {
-                if (MessageBox.Show("Tem a certeza que deseja alterar este livro?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (livroMetodos.verificarDuplicado(livro) > 0)
                 {
-                    setLivro();
-                    livroMetodos.Alterar(livro);
+                    MessageBox.Show("Este livro já existe!", "Erro!", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    livroMetodos.Inserir(livro);
 
                     dataGridViewLivros.DataSource = livroMetodos.SelecionarTodos();
                     preencherCampos();
@@ -174,14 +166,36 @@ namespace frontend
             }
         }
 
+        private void alterarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            setLivro();
+
+            if (validarCampos() == true)
+            {
+                if (livroMetodos.verificarDuplicado(livro) > 0)
+                {
+                    MessageBox.Show("Este livro já existe!", "Erro!", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    if (MessageBox.Show("Tem a certeza que deseja alterar este livro?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        livroMetodos.Alterar(livro);
+
+                        dataGridViewLivros.DataSource = livroMetodos.SelecionarTodos();
+                        preencherCampos();
+                    }
+                }
+            }
+        }
+
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            setLivro();
             if (livroMetodos.ContarAutoresLivros(livro) > 0)
             {
                 if (MessageBox.Show("Este livro tem outros registos associados, deseja apagar o livro e todos os registos associados?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    setLivro();
-
                     livroMetodos.EliminarAutoresLivros(livro);
                     livroMetodos.Eliminar(livro);
 
@@ -193,8 +207,6 @@ namespace frontend
             {
                 if (MessageBox.Show("Tem a certeza que deseja eliminar este livro?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    setLivro();
-
                     livroMetodos.Eliminar(livro);
 
                     dataGridViewLivros.DataSource = livroMetodos.SelecionarTodos();

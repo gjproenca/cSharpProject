@@ -46,10 +46,10 @@ namespace frontend
 
         private void procurarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            setProcurarLivro();
+
             if (validarCampos() == true)
             {
-                setProcurarLivro();
-
                 dataGridViewProcurarLivro.DataSource = procurarLivroMetodos.ProcurarLivro(procurarLivro);
             }
         }

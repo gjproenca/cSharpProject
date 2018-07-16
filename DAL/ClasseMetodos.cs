@@ -86,6 +86,24 @@ namespace DAL
             return tabela;
         }
 
+        public int verificarDuplicado(Autor A)
+        {
+            SqlCommand comm_count = new SqlCommand();
+            comm_count.Connection = conn;
+            comm_count.CommandType = CommandType.Text;
+            comm_count.CommandText = "SELECT COUNT(*) FROM Autores WHERE Nome = @nome AND PaisOrigem = @paisOrigem";
+            comm_count.Parameters.AddWithValue("@nome", A.Nome);
+            comm_count.Parameters.AddWithValue("@paisOrigem", A.PaisOrigem);
+            comm_count.Parameters.AddWithValue("@premioNobel", A.PremioNobel);
+            comm_count.Parameters.AddWithValue("@resumoObra", A.ResumoObra);
+
+            conn.Open();
+            int count = int.Parse(comm_count.ExecuteScalar().ToString());
+            conn.Close();
+
+            return count;
+        }
+
         public int ContarLivros(Autor A)
         {
             SqlCommand comm_count = new SqlCommand();
@@ -166,6 +184,21 @@ namespace DAL
             conn.Open();
             comm_delete.ExecuteNonQuery();
             conn.Close();
+        }
+
+        public int verificarDuplicado(Categoria C)
+        {
+            SqlCommand comm_count = new SqlCommand();
+            comm_count.Connection = conn;
+            comm_count.CommandType = CommandType.Text;
+            comm_count.CommandText = "SELECT COUNT(*) FROM Categorias WHERE Categoria = @categoria";
+            comm_count.Parameters.AddWithValue("@categoria", C.NomeCategoria);
+
+            conn.Open();
+            int count = int.Parse(comm_count.ExecuteScalar().ToString());
+            conn.Close();
+
+            return count;
         }
 
         public DataTable SelecionarTodos()
@@ -281,6 +314,24 @@ namespace DAL
             return count;
         }
 
+        public int verificarDuplicado(Livro L)
+        {
+            SqlCommand comm_count = new SqlCommand();
+            comm_count.Connection = conn;
+            comm_count.CommandType = CommandType.Text;
+            comm_count.CommandText = "SELECT COUNT(*) FROM Livros WHERE Titulo= @titulo AND ISBN = @isbn AND Categoria = (SELECT IDCategoria FROM Categorias WHERE Categoria = @categoria) AND AnoLancamento = @anoLancamento";
+            comm_count.Parameters.AddWithValue("@titulo", L.Titulo);
+            comm_count.Parameters.AddWithValue("@isbn", L.ISBN);
+            comm_count.Parameters.AddWithValue("@categoria", L.Categoria);
+            comm_count.Parameters.AddWithValue("@anoLancamento", L.AnoLancamento);
+
+            conn.Open();
+            int count = int.Parse(comm_count.ExecuteScalar().ToString());
+            conn.Close();
+
+            return count;
+        }
+
         public DataTable SelecionarCategorias()
         {
             SqlDataAdapter comando = new SqlDataAdapter("SELECT DISTINCT Categoria FROM Categorias", conn);
@@ -348,6 +399,22 @@ namespace DAL
             conn.Open();
             comm_delete.ExecuteNonQuery();
             conn.Close();
+        }
+
+        public int verificarDuplicado(AutorLivro AL)
+        {
+            SqlCommand comm_count = new SqlCommand();
+            comm_count.Connection = conn;
+            comm_count.CommandType = CommandType.Text;
+            comm_count.CommandText = "SELECT COUNT(*) FROM AutoresLivros WHERE Autor = (SELECT IDAutor FROM Autores WHERE Nome = @autor) AND Livro = (SELECT IDLivro FROM Livros WHERE Titulo = @livro)";
+            comm_count.Parameters.AddWithValue("@autor", AL.Autor);
+            comm_count.Parameters.AddWithValue("@livro", AL.Livro);
+
+            conn.Open();
+            int count = int.Parse(comm_count.ExecuteScalar().ToString());
+            conn.Close();
+
+            return count;
         }
 
         public DataTable SelecionarAutores()
