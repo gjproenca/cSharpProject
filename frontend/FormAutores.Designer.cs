@@ -131,10 +131,12 @@
             // 
             // comboBoxPaises
             // 
+            this.comboBoxPaises.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxPaises.FormattingEnabled = true;
             this.comboBoxPaises.Location = new System.Drawing.Point(102, 194);
             this.comboBoxPaises.Name = "comboBoxPaises";
             this.comboBoxPaises.Size = new System.Drawing.Size(253, 21);
+            this.comboBoxPaises.Sorted = true;
             this.comboBoxPaises.TabIndex = 9;
             // 
             // menuStrip1
@@ -217,6 +219,7 @@
             this.MinimizeBox = false;
             this.Name = "FormAutores";
             this.Text = "FormAutores";
+            this.Activated += new System.EventHandler(this.FormAutores_Activated);
             this.Load += new System.EventHandler(this.FormAutores_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAutores)).EndInit();
             this.menuStrip1.ResumeLayout(false);

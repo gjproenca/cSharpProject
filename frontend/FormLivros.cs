@@ -29,6 +29,13 @@ namespace frontend
             setLivro();
         }
 
+        private void FormLivros_Activated(object sender, EventArgs e)
+        {
+            dataGridViewLivros.DataSource = livroMetodos.SelecionarTodos();
+            preencherCampos();
+            setLivro();
+        }
+
         private void dataGridViewLivros_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             preencherCampos();

@@ -27,6 +27,13 @@ namespace frontend
             setAutorLivro();
         }
 
+        private void FormAutoresLivros_Activated(object sender, EventArgs e)
+        {
+            dataGridViewAutoresLivros.DataSource = autorLivroMetodos.SelecionarTodos();
+            preencherCampos();
+            setAutorLivro();
+        }
+
         private void dataGridViewAutoresLivros_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             preencherCampos();

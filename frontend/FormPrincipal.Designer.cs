@@ -62,6 +62,7 @@
             this.autoresToolStripMenuItem1,
             this.autoresLivrosToolStripMenuItem,
             this.categoriasToolStripMenuItem1});
+            this.livrosToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.livrosToolStripMenuItem.Name = "livrosToolStripMenuItem";
             this.livrosToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.livrosToolStripMenuItem.Text = "Menu";
@@ -69,40 +70,40 @@
             // procurarToolStripMenuItem
             // 
             this.procurarToolStripMenuItem.Name = "procurarToolStripMenuItem";
-            this.procurarToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.procurarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.procurarToolStripMenuItem.Text = "Procurar livro";
             this.procurarToolStripMenuItem.Click += new System.EventHandler(this.procurarToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(146, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
             // 
             // livrosToolStripMenuItem1
             // 
             this.livrosToolStripMenuItem1.Name = "livrosToolStripMenuItem1";
-            this.livrosToolStripMenuItem1.Size = new System.Drawing.Size(149, 22);
+            this.livrosToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.livrosToolStripMenuItem1.Text = "Livros";
             this.livrosToolStripMenuItem1.Click += new System.EventHandler(this.livrosToolStripMenuItem1_Click);
             // 
             // autoresToolStripMenuItem1
             // 
             this.autoresToolStripMenuItem1.Name = "autoresToolStripMenuItem1";
-            this.autoresToolStripMenuItem1.Size = new System.Drawing.Size(149, 22);
+            this.autoresToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.autoresToolStripMenuItem1.Text = "Autores";
             this.autoresToolStripMenuItem1.Click += new System.EventHandler(this.autoresToolStripMenuItem1_Click);
             // 
             // autoresLivrosToolStripMenuItem
             // 
             this.autoresLivrosToolStripMenuItem.Name = "autoresLivrosToolStripMenuItem";
-            this.autoresLivrosToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.autoresLivrosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.autoresLivrosToolStripMenuItem.Text = "Autores Livros";
             this.autoresLivrosToolStripMenuItem.Click += new System.EventHandler(this.autoresLivrosToolStripMenuItem_Click);
             // 
             // categoriasToolStripMenuItem1
             // 
             this.categoriasToolStripMenuItem1.Name = "categoriasToolStripMenuItem1";
-            this.categoriasToolStripMenuItem1.Size = new System.Drawing.Size(149, 22);
+            this.categoriasToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.categoriasToolStripMenuItem1.Text = "Categorias";
             this.categoriasToolStripMenuItem1.Click += new System.EventHandler(this.categoriasToolStripMenuItem1_Click);
             // 
@@ -120,6 +121,7 @@
             this.Name = "FormPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editora";
+            this.Load += new System.EventHandler(this.FormPrincipal_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();

@@ -134,6 +134,7 @@
             this.Name = "FormProcurarLivro";
             this.Text = "FormProcurar";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Activated += new System.EventHandler(this.FormProcurarLivro_Activated);
             this.Load += new System.EventHandler(this.FormProcurarLivro_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProcurarLivro)).EndInit();
             this.menuStrip1.ResumeLayout(false);

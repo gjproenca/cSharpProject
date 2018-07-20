@@ -174,6 +174,7 @@
             this.MinimizeBox = false;
             this.Name = "FormCategorias";
             this.Text = "Categorias";
+            this.Activated += new System.EventHandler(this.FormCategorias_Activated);
             this.Load += new System.EventHandler(this.FormCategorias_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCategorias)).EndInit();
             this.menuStrip1.ResumeLayout(false);

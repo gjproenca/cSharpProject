@@ -11,9 +11,9 @@ namespace DAL
     public class AutorMetodos
     {
         //Other pcs
-        //private SqlConnection conn = new SqlConnection(@"Data Source=.\sqlexpress;Initial Catalog=Editora;Integrated Security=True");
+        private SqlConnection conn = new SqlConnection(@"Data Source=.\sqlexpress;Initial Catalog=Editora;Integrated Security=True");
         //My pc
-        private SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=Editora;Integrated Security=True");
+        //private SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=Editora;Integrated Security=True");
 
         public void Inserir(Autor A)
         {
@@ -123,9 +123,21 @@ namespace DAL
     public class CategoriaMetodos
     {
         //Other pcs
-        //private SqlConnection conn = new SqlConnection(@"Data Source=.\sqlexpress;Initial Catalog=Editora;Integrated Security=True");
+        private SqlConnection conn = new SqlConnection(@"Data Source=.\sqlexpress;Initial Catalog=Editora;Integrated Security=True");
         //My pc
-        private SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=Editora;Integrated Security=True");
+        //private SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=Editora;Integrated Security=True");
+
+        public void InserirSemCategoria()
+        {
+            SqlCommand comm_insert = new SqlCommand();
+            comm_insert.Connection = conn;
+            comm_insert.CommandType = CommandType.Text;
+            comm_insert.CommandText = "IF NOT EXISTS (SELECT * FROM Categorias WHERE Categoria LIKE 'Sem categoria') INSERT INTO Categorias(Categoria, Descricao) VALUES('Sem categoria', 'Este registo serve para informar o utilizador de um livro sem categoria.')";
+            //abrir ligação à base de dados e executar INSERT
+            conn.Open();
+            comm_insert.ExecuteNonQuery();
+            conn.Close();
+        }
 
         public void Inserir(Categoria C)
         {
@@ -158,6 +170,20 @@ namespace DAL
             conn.Close();
         }
 
+        public void AlterarCategoriaLivros(Categoria C)
+        {
+            SqlCommand comm_update = new SqlCommand();
+            comm_update.Connection = conn;
+            comm_update.CommandType = CommandType.Text;
+            comm_update.CommandText = "UPDATE Livros SET Categoria = (SELECT IDCategoria FROM Categorias WHERE Categoria LIKE 'Sem categoria') WHERE Categoria = @categoria";
+            //parâmetros do comando definido
+            comm_update.Parameters.AddWithValue("@categoria", C.IDCategoria);
+            //abrir ligação à base de dados e executar DELETE
+            conn.Open();
+            comm_update.ExecuteNonQuery();
+            conn.Close();
+        }
+
         public void Eliminar(Categoria C)
         {
             SqlCommand comm_delete = new SqlCommand();
@@ -166,20 +192,6 @@ namespace DAL
             comm_delete.CommandText = "DELETE FROM Categorias WHERE IDCategoria = @idCategoria";
             //parâmetros do comando definido
             comm_delete.Parameters.AddWithValue("@idCategoria", C.IDCategoria);
-            //abrir ligação à base de dados e executar DELETE
-            conn.Open();
-            comm_delete.ExecuteNonQuery();
-            conn.Close();
-        }
-
-        public void EliminarLivros(Categoria C)
-        {
-            SqlCommand comm_delete = new SqlCommand();
-            comm_delete.Connection = conn;
-            comm_delete.CommandType = CommandType.Text;
-            comm_delete.CommandText = "DELETE FROM Livros WHERE Categoria = @categoria";
-            //parâmetros do comando definido
-            comm_delete.Parameters.AddWithValue("@categoria", C.IDCategoria);
             //abrir ligação à base de dados e executar DELETE
             conn.Open();
             comm_delete.ExecuteNonQuery();
@@ -228,9 +240,9 @@ namespace DAL
     public class LivroMetodos
     {
         //Other pcs
-        //private SqlConnection conn = new SqlConnection(@"Data Source=.\sqlexpress;Initial Catalog=Editora;Integrated Security=True");
+        private SqlConnection conn = new SqlConnection(@"Data Source=.\sqlexpress;Initial Catalog=Editora;Integrated Security=True");
         //My pc
-        private SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=Editora;Integrated Security=True");
+        //private SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=Editora;Integrated Security=True");
 
         public void Inserir(Livro L)
         {
@@ -352,9 +364,9 @@ namespace DAL
     public class AutorLivroMetodos
     {
         //Other pcs
-        //private SqlConnection conn = new SqlConnection(@"Data Source=.\sqlexpress;Initial Catalog=Editora;Integrated Security=True");
+        private SqlConnection conn = new SqlConnection(@"Data Source=.\sqlexpress;Initial Catalog=Editora;Integrated Security=True");
         //My pc
-        private SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=Editora;Integrated Security=True");
+        //private SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=Editora;Integrated Security=True");
 
         public void Inserir(AutorLivro AL)
         {
@@ -445,9 +457,9 @@ namespace DAL
     public class ProcurarLivroMetodos
     {
         //Other pcs
-        //private SqlConnection conn = new SqlConnection(@"Data Source=.\sqlexpress;Initial Catalog=Editora;Integrated Security=True");
+        private SqlConnection conn = new SqlConnection(@"Data Source=.\sqlexpress;Initial Catalog=Editora;Integrated Security=True");
         //My pc
-        private SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=Editora;Integrated Security=True");
+        //private SqlConnection conn = new SqlConnection(@"Data Source=.;Initial Catalog=Editora;Integrated Security=True");
 
         public DataTable ProcurarLivro(ProcurarLivro PL)
         {

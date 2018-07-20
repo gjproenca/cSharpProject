@@ -25,9 +25,14 @@ namespace frontend
             dataGridViewCategorias.DataSource = categoriaMetodos.SelecionarTodos();
             preencherCampos();
             setCategoria();
-
         }
 
+        private void FormCategorias_Activated(object sender, EventArgs e)
+        {
+            dataGridViewCategorias.DataSource = categoriaMetodos.SelecionarTodos();
+            preencherCampos();
+            setCategoria();
+        }
 
         private void dataGridViewCategorias_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -62,6 +67,19 @@ namespace frontend
             textBoxDescricao.Text = dataGridViewCategorias.CurrentRow.Cells[2].Value.ToString();
         }
 
+        private Boolean verificarSemCategoria()
+        {
+            if (textBoxCategoria.Text == "Sem categoria")
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+
         private void inserirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             setCategoria();
@@ -86,22 +104,29 @@ namespace frontend
         {
             setCategoria();
 
-            if (validarCampos() == true)
+            if (verificarSemCategoria() == true)
             {
-                if (categoriaMetodos.verificarDuplicado(categoria) > 0)
+                if (validarCampos() == true)
                 {
-                    MessageBox.Show("Esta categoria já existe!", "Erro!", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    if (MessageBox.Show("Tem a certeza que deseja alterar esta categoria?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (categoriaMetodos.verificarDuplicado(categoria) > 0)
                     {
-                        categoriaMetodos.Alterar(categoria);
+                        MessageBox.Show("Esta categoria já existe!", "Erro!", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        if (MessageBox.Show("Tem a certeza que deseja alterar esta categoria?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            categoriaMetodos.Alterar(categoria);
 
-                        dataGridViewCategorias.DataSource = categoriaMetodos.SelecionarTodos();
-                        preencherCampos();
+                            dataGridViewCategorias.DataSource = categoriaMetodos.SelecionarTodos();
+                            preencherCampos();
+                        }
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Não é possível alterar esta categoria, esta categoria pertence ao programa!", "Erro!", MessageBoxButtons.OK);
             }
         }
 
@@ -109,27 +134,34 @@ namespace frontend
         {
             setCategoria();
 
-            if (categoriaMetodos.ContarLivros(categoria) > 0)
+            if (verificarSemCategoria() == true)
             {
-                if (MessageBox.Show("Esta categoria tem outros registos associados, deseja apagar a categoria e todos os registos associados?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (categoriaMetodos.ContarLivros(categoria) > 0)
                 {
-                    // FIXME: not able to delete books with entries in autores livros, might need to delete author aswell
-                    categoriaMetodos.EliminarLivros(categoria);
-                    categoriaMetodos.Eliminar(categoria);
+                    if (MessageBox.Show("Esta categoria tem outros registos associados, deseja apagar a categoria e todos os registos associados?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        // FIXME: not able to delete books with entries in autores livros, might need to delete author aswell
+                        categoriaMetodos.AlterarCategoriaLivros(categoria);
+                        categoriaMetodos.Eliminar(categoria);
 
-                    dataGridViewCategorias.DataSource = categoriaMetodos.SelecionarTodos();
-                    preencherCampos();
+                        dataGridViewCategorias.DataSource = categoriaMetodos.SelecionarTodos();
+                        preencherCampos();
+                    }
+                }
+                else
+                {
+                    if (MessageBox.Show("Tem a certeza que deseja eliminar esta categoria?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        categoriaMetodos.Eliminar(categoria);
+
+                        dataGridViewCategorias.DataSource = categoriaMetodos.SelecionarTodos();
+                        preencherCampos();
+                    }
                 }
             }
             else
             {
-                if (MessageBox.Show("Tem a certeza que deseja eliminar esta categoria?", "Aviso", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    categoriaMetodos.Eliminar(categoria);
-
-                    dataGridViewCategorias.DataSource = categoriaMetodos.SelecionarTodos();
-                    preencherCampos();
-                }
+                MessageBox.Show("Não é possível eliminar esta categoria, esta categoria pertence ao programa!", "Erro!", MessageBoxButtons.OK);
             }
         }
 

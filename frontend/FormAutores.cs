@@ -31,6 +31,14 @@ namespace frontend
             setAutor();
         }
 
+        private void FormAutores_Activated(object sender, EventArgs e)
+        {
+            dataGridViewAutores.DataSource = autorMetodos.SelecionarTodos();
+            PreencherPaises();
+            preencherCampos();
+            setAutor();
+        }
+
         private void dataGridViewAutores_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             preencherCampos();

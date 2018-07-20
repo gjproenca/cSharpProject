@@ -17,6 +17,13 @@ namespace frontend
             InitializeComponent();
         }
 
+        private void FormPrincipal_Load(object sender, EventArgs e)
+        {
+            DAL.CategoriaMetodos categoriaMetodos = new DAL.CategoriaMetodos();
+
+            categoriaMetodos.InserirSemCategoria();
+        }
+
         // global variables declaration
         private FormLivros formLivros;
         private FormAutores formAutores;

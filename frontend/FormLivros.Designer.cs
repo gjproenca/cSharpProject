@@ -211,10 +211,12 @@
             // 
             // comboBoxCategoria
             // 
+            this.comboBoxCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCategoria.FormattingEnabled = true;
             this.comboBoxCategoria.Location = new System.Drawing.Point(71, 220);
             this.comboBoxCategoria.Name = "comboBoxCategoria";
             this.comboBoxCategoria.Size = new System.Drawing.Size(117, 21);
+            this.comboBoxCategoria.Sorted = true;
             this.comboBoxCategoria.TabIndex = 5;
             // 
             // textBoxAnoLancamento
@@ -253,6 +255,7 @@
             this.MinimizeBox = false;
             this.Name = "FormLivros";
             this.Text = "Livros";
+            this.Activated += new System.EventHandler(this.FormLivros_Activated);
             this.Load += new System.EventHandler(this.FormLivros_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLivros)).EndInit();
             this.menuStrip1.ResumeLayout(false);

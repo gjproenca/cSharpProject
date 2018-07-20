@@ -49,3 +49,10 @@ J:\programador de informatica\C#\avaliacao\csharp-avaliacao\frontend\obj\Debug\f
 J:\programador de informatica\C#\avaliacao\csharp-avaliacao\frontend\obj\Debug\frontend.pdb
 J:\programador de informatica\C#\avaliacao\csharp-avaliacao\frontend\obj\Debug\frontend.FormAutoresLivros.resources
 J:\programador de informatica\C#\avaliacao\csharp-avaliacao\frontend\obj\Debug\frontend.FormProcurarLivro.resources
+\\Vboxsvr\j_drive\programador de informatica\C#\avaliacao\csharp-avaliacao\frontend\obj\Debug\frontend.FormAutoresLivros.resources
+\\Vboxsvr\j_drive\programador de informatica\C#\avaliacao\csharp-avaliacao\frontend\obj\Debug\frontend.FormProcurarLivro.resources
+F:\programador de informatica\C#\avaliacao\csharp-avaliacao\frontend\bin\Debug\DAL.dll
+F:\programador de informatica\C#\avaliacao\csharp-avaliacao\frontend\bin\Debug\DAL.pdb
+F:\programador de informatica\C#\avaliacao\csharp-avaliacao\frontend\obj\Debug\frontend.FormAutoresLivros.resources
+F:\programador de informatica\C#\avaliacao\csharp-avaliacao\frontend\obj\Debug\frontend.FormLivros.resources
+F:\programador de informatica\C#\avaliacao\csharp-avaliacao\frontend\obj\Debug\frontend.FormProcurarLivro.resources

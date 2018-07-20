@@ -71,10 +71,12 @@
             // 
             // comboBoxAutor
             // 
+            this.comboBoxAutor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxAutor.FormattingEnabled = true;
             this.comboBoxAutor.Location = new System.Drawing.Point(50, 169);
             this.comboBoxAutor.Name = "comboBoxAutor";
             this.comboBoxAutor.Size = new System.Drawing.Size(397, 21);
+            this.comboBoxAutor.Sorted = true;
             this.comboBoxAutor.TabIndex = 2;
             // 
             // label2
@@ -88,10 +90,12 @@
             // 
             // comboBoxLivro
             // 
+            this.comboBoxLivro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxLivro.FormattingEnabled = true;
             this.comboBoxLivro.Location = new System.Drawing.Point(50, 196);
             this.comboBoxLivro.Name = "comboBoxLivro";
             this.comboBoxLivro.Size = new System.Drawing.Size(397, 21);
+            this.comboBoxLivro.Sorted = true;
             this.comboBoxLivro.TabIndex = 2;
             // 
             // menuStrip1
@@ -167,6 +171,7 @@
             this.MinimizeBox = false;
             this.Name = "FormAutoresLivros";
             this.Text = "AutoresLivros";
+            this.Activated += new System.EventHandler(this.FormAutoresLivros_Activated);
             this.Load += new System.EventHandler(this.AutoresLivros_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAutoresLivros)).EndInit();
             this.menuStrip1.ResumeLayout(false);

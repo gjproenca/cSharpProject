@@ -25,6 +25,11 @@ namespace frontend
             dataGridViewProcurarLivro.DataSource = procurarLivroMetodos.SelecionarTodos();
         }
 
+        private void FormProcurarLivro_Activated(object sender, EventArgs e)
+        {
+            dataGridViewProcurarLivro.DataSource = procurarLivroMetodos.SelecionarTodos();
+        }
+
         private void setProcurarLivro()
         {
             procurarLivro.Titulo = textBoxTitulo.Text;
