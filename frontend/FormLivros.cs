@@ -78,6 +78,7 @@ namespace frontend
         {
             Boolean validarTitulo = false;
             Boolean validarIsbn = false;
+            Boolean validarAno = false;
             Boolean validarPreco = false;
             Boolean validarQuantidadeStock = false;
 
@@ -105,6 +106,16 @@ namespace frontend
             {
                 errorProvider1.SetError(textBoxIsbn, "");
                 validarIsbn = true;
+            }
+
+            if (Decimal.TryParse(textBoxAnoLancamento.Text, out decimal tempAno) == false)
+            {
+                errorProvider1.SetError(textBoxAnoLancamento, "Formato inválido!");
+            }
+            else
+            {
+                errorProvider1.SetError(textBoxAnoLancamento, "");
+                validarAno = true;
             }
 
             if (textBoxPreco.Text == "")
@@ -143,7 +154,7 @@ namespace frontend
                 validarQuantidadeStock = true;
             }
 
-            if (validarTitulo == true && validarIsbn == true && validarPreco == true && validarQuantidadeStock == true)
+            if (validarTitulo == true && validarIsbn == true && validarAno == true && validarPreco == true && validarQuantidadeStock == true)
             {
                 return true;
             }
